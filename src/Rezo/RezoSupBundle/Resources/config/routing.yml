@@ -10,6 +10,14 @@ charte:
     pattern:  /charte/
     defaults: { _controller: RezoRezoSupBundle:Default:charte }
 
+
 news:
     pattern:  /actus/
+    defaults: { _controller: RezoRezoSupBundle:Default:news , page:1}
+
+
+news_page:
+    pattern:  /actus/{page}
     defaults: { _controller: RezoRezoSupBundle:Default:news }
+    requirements:
+        page: \d+

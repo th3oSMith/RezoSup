@@ -39,16 +39,38 @@ class __TwigTemplate_67bb095906dc7891a23f81f2aa00f0f6 extends Twig_Template
         echo "
 <h3>Actualités :</h3><br/>
 
-
 ";
-        // line 12
+        // line 11
+        if (((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) != 1)) {
+            // line 12
+            echo "<a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("news_page", array("page" => ((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) - 1))), "html", null, true);
+            echo "\">Page précédente</a>
+&nbsp;
+";
+        }
+        // line 15
+        echo "
+";
+        // line 16
+        if (((isset($context["dernier"]) ? $context["dernier"] : $this->getContext($context, "dernier")) == false)) {
+            // line 17
+            echo "<a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("news_page", array("page" => ((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) + 1))), "html", null, true);
+            echo "\">Page suivante</a>
+";
+        }
+        // line 19
+        echo "<br/>
+";
+        // line 20
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["news"]) ? $context["news"] : $this->getContext($context, "news")));
         foreach ($context['_seq'] as $context["_key"] => $context["entry"]) {
-            // line 13
+            // line 21
             echo "<div class=\"newsItem\">
 \t<div class=\"title\"><span class=\"title\">";
-            // line 14
+            // line 22
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entry"]) ? $context["entry"] : $this->getContext($context, "entry")), "title"), "html", null, true);
             echo "</span><br/><span class=\"author\">Le ";
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entry"]) ? $context["entry"] : $this->getContext($context, "entry")), "date"), "d-m-Y"), "html", null, true);
@@ -56,7 +78,7 @@ class __TwigTemplate_67bb095906dc7891a23f81f2aa00f0f6 extends Twig_Template
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entry"]) ? $context["entry"] : $this->getContext($context, "entry")), "author"), "html", null, true);
             echo "</span></div>
 \t<div class=\"content\">";
-            // line 15
+            // line 23
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entry"]) ? $context["entry"] : $this->getContext($context, "entry")), "content"), "html", null, true);
             echo "</div>
 </div>
@@ -65,7 +87,7 @@ class __TwigTemplate_67bb095906dc7891a23f81f2aa00f0f6 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entry'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 18
+        // line 26
         echo "
 
 ";
@@ -83,6 +105,6 @@ class __TwigTemplate_67bb095906dc7891a23f81f2aa00f0f6 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  69 => 18,  60 => 15,  52 => 14,  49 => 13,  45 => 12,  39 => 8,  36 => 7,  29 => 3,);
+        return array (  91 => 26,  82 => 23,  74 => 22,  71 => 21,  67 => 20,  64 => 19,  58 => 17,  56 => 16,  53 => 15,  46 => 12,  44 => 11,  39 => 8,  36 => 7,  29 => 3,);
     }
 }

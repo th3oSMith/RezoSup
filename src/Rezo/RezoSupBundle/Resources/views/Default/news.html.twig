@@ -8,7 +8,15 @@
 
 <h3>Actualités :</h3><br/>
 
+{% if page!=1 %}
+<a href="{{path('news_page', {'page':page-1})}}">Page précédente</a>
+&nbsp;
+{% endif %}
 
+{% if dernier==false %}
+<a href="{{path('news_page', {'page':page+1})}}">Page suivante</a>
+{% endif %}
+<br/>
 {% for entry in news %}
 <div class="newsItem">
 	<div class="title"><span class="title">{{entry.title}}</span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.author}}</span></div>

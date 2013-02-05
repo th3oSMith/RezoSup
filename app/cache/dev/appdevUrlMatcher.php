@@ -195,7 +195,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->redirect($pathinfo.'/', 'news');
             }
 
-            return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',  '_route' => 'news',);
+            return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',  'page' => '1',  '_route' => 'news',);
+        }
+
+        // news_page
+        if (0 === strpos($pathinfo, '/actus') && preg_match('#^/actus/(?P<page>\\d+)$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',)), array('_route' => 'news_page'));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
