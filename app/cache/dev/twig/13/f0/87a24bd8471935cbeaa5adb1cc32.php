@@ -29,7 +29,7 @@ class __TwigTemplate_13f087a24bd8471935cbeaa5adb1cc32 extends Twig_Template
     public function block_title($context, array $blocks = array())
     {
         $this->displayParentBlock("title", $context, $blocks);
-        echo " - Home";
+        echo " - Charte";
     }
 
     // line 7

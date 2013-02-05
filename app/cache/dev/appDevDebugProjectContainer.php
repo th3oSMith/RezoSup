@@ -257,7 +257,7 @@ class appDevDebugProjectContainer extends Container
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => '127.0.0.1', 'port' => NULL, 'user' => 'symfony', 'password' => 'symfony', 'charset' => 'UTF8', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'rezosup', 'host' => 'localhost', 'port' => NULL, 'user' => 'rezosup', 'password' => 'rezosup', 'charset' => 'UTF8', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
     }
 
     /**
@@ -266,11 +266,11 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager51103e512138a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51103e512138a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager5110ff2bded5f_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5110ff2bded5f_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/home/remi/public_html/rezosup/app/cache/dev/jms_diextra/doctrine/EntityManager_51103e512138a.php';
+        require_once '/home/remi/public_html/rezosup/app/cache/dev/jms_diextra/doctrine/EntityManager_5110ff2bded5f.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_09e6ea3df1ef16d2461791c5a5bb72c3');
@@ -281,23 +281,26 @@ class appDevDebugProjectContainer extends Container
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_09e6ea3df1ef16d2461791c5a5bb72c3');
 
-        $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array());
-        $d->setMetadataCacheImpl($a);
-        $d->setQueryCacheImpl($b);
-        $d->setResultCacheImpl($c);
-        $d->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\DriverChain());
-        $d->setProxyDir('/home/remi/public_html/rezosup/app/cache/dev/doctrine/orm/Proxies');
-        $d->setProxyNamespace('Proxies');
-        $d->setAutoGenerateProxyClasses(true);
-        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $d->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $d->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => '/home/remi/public_html/rezosup/src/Rezo/RezoSupBundle/Entity')), 'Rezo\\RezoSupBundle\\Entity');
 
-        $e = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $d);
-        $this->get('doctrine.orm.default_manager_configurator')->configure($e);
+        $e = new \Doctrine\ORM\Configuration();
+        $e->setEntityNamespaces(array('RezoRezoSupBundle' => 'Rezo\\RezoSupBundle\\Entity'));
+        $e->setMetadataCacheImpl($a);
+        $e->setQueryCacheImpl($b);
+        $e->setResultCacheImpl($c);
+        $e->setMetadataDriverImpl($d);
+        $e->setProxyDir('/home/remi/public_html/rezosup/app/cache/dev/doctrine/orm/Proxies');
+        $e->setProxyNamespace('Proxies');
+        $e->setAutoGenerateProxyClasses(true);
+        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $e->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $e->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51103e512138a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($e, $this);
+        $f = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
+        $this->get('doctrine.orm.default_manager_configurator')->configure($f);
+
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5110ff2bded5f_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
     }
 
     /**
@@ -2578,7 +2581,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager51103e512138a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager5110ff2bded5f_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -2947,11 +2950,11 @@ class appDevDebugProjectContainer extends Container
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
             'database_driver' => 'pdo_mysql',
-            'database_host' => '127.0.0.1',
+            'database_host' => 'localhost',
             'database_port' => NULL,
-            'database_name' => 'symfony',
-            'database_user' => 'symfony',
-            'database_password' => 'symfony',
+            'database_name' => 'rezosup',
+            'database_user' => 'rezosup',
+            'database_password' => 'rezosup',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
@@ -3405,8 +3408,8 @@ class appDevDebugProjectContainer extends Container
             ),
             'jms_di_extra.cache_dir' => '/home/remi/public_html/rezosup/app/cache/dev/jms_diextra',
             'jms_di_extra.doctrine_integration' => true,
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/remi/public_html/rezosup/app/cache/dev/jms_diextra/doctrine/EntityManager_51103e512138a.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51103e512138a_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/home/remi/public_html/rezosup/app/cache/dev/jms_diextra/doctrine/EntityManager_5110ff2bded5f.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5110ff2bded5f_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),

@@ -75,7 +75,10 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
         echo "\">RezoSup</a>
           <div class=\"nav-collapse collapse\">
             <ul class=\"nav\">
-              <li><a href=\"#\">Actualité</a></li>
+              <li><a href=\"";
+        // line 43
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("news"), "html", null, true);
+        echo "\">Actualité</a></li>
               <li class=\"dropdown\">
                 <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Trombinoscope<b class=\"caret\"></b></a>
                 <ul class=\"dropdown-menu\">
@@ -185,6 +188,6 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  159 => 91,  153 => 5,  145 => 111,  136 => 104,  134 => 91,  115 => 75,  96 => 59,  74 => 40,  43 => 12,  39 => 11,  34 => 9,  27 => 5,  21 => 1,);
+        return array (  162 => 91,  156 => 5,  148 => 111,  139 => 104,  137 => 91,  118 => 75,  99 => 59,  80 => 43,  74 => 40,  43 => 12,  39 => 11,  34 => 9,  27 => 5,  21 => 1,);
     }
 }

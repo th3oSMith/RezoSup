@@ -9,3 +9,7 @@ thanks:
 charte:
     pattern:  /charte/
     defaults: { _controller: RezoRezoSupBundle:Default:charte }
+
+news:
+    pattern:  /actus/
+    defaults: { _controller: RezoRezoSupBundle:Default:news }

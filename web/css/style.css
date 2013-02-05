@@ -83,3 +83,32 @@ h1 {
 
 	font-size:28.5px;
 }
+
+.newsItem {
+
+	margin-bottom:10px;
+	border:1px solid black;
+
+}
+
+div.title{
+	border-bottom:1px solid black;
+	padding:3px
+}
+
+span.title{
+
+	font-weight:bold;
+
+}
+
+span.author{
+	font-size:12px;
+}
+
+div.content{
+	padding:3px;
+	padding-top:5px;
+	
+
+}

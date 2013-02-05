@@ -39,6 +39,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'home' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/home/',    ),  ),),
         'thanks' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::thanksAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/thanks/',    ),  ),),
         'charte' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::charteAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/charte/',    ),  ),),
+        'news' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/actus/',    ),  ),),
     );
 
     /**

@@ -19,4 +19,16 @@ class DefaultController extends Controller
     {
         return $this->render('RezoRezoSupBundle:Default:charte.html.twig');
     }
+    
+        public function newsAction()
+    {
+		
+		$repository = $this->getDoctrine()
+					->getRepository('RezoRezoSupBundle:News');
+					
+		$news = $repository->findAll();
+
+		
+        return $this->render('RezoRezoSupBundle:Default:news.html.twig',array('news'=>$news));
+    }
 }

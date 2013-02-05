@@ -189,6 +189,15 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::charteAction',  '_route' => 'charte',);
         }
 
+        // news
+        if (rtrim($pathinfo, '/') === '/actus') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'news');
+            }
+
+            return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',  '_route' => 'news',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
