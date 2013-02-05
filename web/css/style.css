@@ -1,0 +1,85 @@
+
+
+body {
+
+	padding-top:10px;
+	background-image:url(../img/debut_dark.png)
+
+
+}
+
+#content{
+
+	margin:auto;
+	width:940px;
+	padding-top:30px;	
+
+}
+
+#content .txt {
+
+	margin-left:30px;
+	margin-right:30px;
+	margin-top:-10px;
+
+}
+
+ul {
+
+	margin-top:10px;
+	margin-bottom:20px;
+
+}
+
+ul {
+	list-style-type:none; 
+}
+
+#container {
+
+	background-image:url(../img/white_plaster.png);
+	
+	padding-top:0px;
+	height:100%;
+	width:940px;
+	position:fixed;
+	box-shadow: 1px 1px 6px #555;
+	top:0px;
+	z-index:-2;
+	
+
+}
+
+.navbar-fixed-top .container {
+
+width:725px;
+
+}
+
+.navbar-container {
+
+	position:absolute;
+	top:15px;
+	left:0px;
+	width:100%;
+	z-index:10;
+
+}
+
+.navbar-inverse {
+
+	width:1050px;
+	margin:auto;
+	box-shadow: 1px 1px 6px #555;
+
+}
+
+p {
+
+	text-align:justify;
+}
+
+h1 {
+
+	font-size:28.5px;
+}

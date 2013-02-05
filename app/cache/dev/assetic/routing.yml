@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/remi/public_html/rezosup/app/config/routing_dev.yml

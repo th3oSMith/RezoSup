@@ -1,0 +1,11 @@
+home:
+    pattern:  /home/
+    defaults: { _controller: RezoRezoSupBundle:Default:index }
+
+thanks:
+    pattern:  /thanks/
+    defaults: { _controller: RezoRezoSupBundle:Default:thanks }
+
+charte:
+    pattern:  /charte/
+    defaults: { _controller: RezoRezoSupBundle:Default:charte }
