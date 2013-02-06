@@ -112,7 +112,7 @@ class News
      * @param \String $author
      * @return News
      */
-    public function setAuthor(\String $author)
+    public function setAuthor($author)
     {
         $this->author = $author;
     

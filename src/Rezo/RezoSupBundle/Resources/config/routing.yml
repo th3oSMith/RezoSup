@@ -17,7 +17,20 @@ news:
 
 
 news_page:
-    pattern:  /actus/{page}
+    pattern:  /actus/{page}/
     defaults: { _controller: RezoRezoSupBundle:Default:news }
     requirements:
         page: \d+
+
+news_post_process:
+    pattern:  /post/
+    defaults: { _controller: RezoRezoSupBundle:Default:newsPostProcess }
+    requirements:
+        _method : POST
+
+news_post:
+    pattern:  /post/
+    defaults: { _controller: RezoRezoSupBundle:Default:newsPost }
+
+
+    

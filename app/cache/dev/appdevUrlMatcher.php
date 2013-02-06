@@ -199,8 +199,32 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // news_page
-        if (0 === strpos($pathinfo, '/actus') && preg_match('#^/actus/(?P<page>\\d+)$#s', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/actus') && preg_match('#^/actus/(?P<page>\\d+)/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'news_page');
+            }
+
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsAction',)), array('_route' => 'news_page'));
+        }
+
+        // news_post_process
+        if ($pathinfo === '/post/') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_news_post_process;
+            }
+
+            return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsPostProcessAction',  '_route' => 'news_post_process',);
+        }
+        not_news_post_process:
+
+        // news_post
+        if (rtrim($pathinfo, '/') === '/post') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'news_post');
+            }
+
+            return array (  '_controller' => 'Rezo\\RezoSupBundle\\Controller\\DefaultController::newsPostAction',  '_route' => 'news_post',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
