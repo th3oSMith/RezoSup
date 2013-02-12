@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+
+
+{% block body %}
+
+<h2>Rezosup et les proxys et autres wingates</h2>
+
+<P>Pour des raisons de sécurité, les services intègrent maintenant un 
+détecteur de proxys non sécurisés.</P>
+
+<P>Un proxy est un logiciel qui tourne sur un ordinateur connecté à Internet 
+et qui, s'il est mal configuré (donc non sécurisé), peut servir de relais à 
+des pirates afin d'anonymiser leur connexion.</P>
+
+<P>Pour prévenir ce genre d'attaques, les services vérifient qu'à chaque 
+connexion d'un utilisateur, celui-ci n'utilise pas un proxy non-sécurisé 
+pour se connecter à RezoSup.</P>
+
+<P>4 types de proxys sont analysés :<br>
+- HTTP<br>
+- Socks4<br>
+- Socks5<br>
+- Wingate<br>
+</P>
+<P>Le détecteur de proxys tente de se connecter aux ports usuels, puis si un 
+proxy est détecté, il vérifie que l'on ne peut pas l'utiliser à distance. 
+Dans le cas contraire, la machine sur laquelle se trouve le proxy non 
+sécurisé est bannie de RezoSup.</P>
+
+<h4>Que faire quand on utilise un des logiciels cités</h4>
+
+<P>Si vous utilisez un proxy pour vous connecter et que vous ne souhaitez pas 
+être banni du réseau, vous pouvez le sécuriser de 2 façons :<br>
+
+1) Installez un firewall qui n'autorise que les ordinateurs de confiance à 
+se connecter sur votre proxy.<br>
+
+2) Configurez les paramètres d'accès à votre proxy :<br>
+- HTTP : filtrage par IP<br>
+- Socks4 et Socks5 : modifiez la ligne "permit -  -  -  -  -  -" dans le 
+fichier de configuration du serveur socks, et n'autorisez que les adresses 
+IP de confiance<br>
+- Wingate : installez un firewall<br>
+</P>
+
+{% endblock %}

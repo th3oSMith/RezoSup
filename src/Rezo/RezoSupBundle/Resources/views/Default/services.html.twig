@@ -1,0 +1,554 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+
+
+{% block body %}
+
+<h2>Les services RezoSup : Commandes</h2>
+
+<h4>Des services : dans quel but ?</h4>
+<P>La majorité des regroupements préfèrent laisser une totale liberté à leurs utilisateurs. Ainsi, sur EFNET, les channels ainsi
+que les nicks n'appartiennent à personne. Contrepartie : les utilisateurs doivent développer un certain nombre de connaissances, notamment techniques, s'ils souhaitent conserver les chans qu'ils ont créés.
+RezoSup part d'un autre principe : l'utilisateur reste entièrement libre de faire ce qu'il veut à condition de ne pas déranger le 
+bon fonctionnement des serveurs mais RezoSup met à sa disposition quelques outils qui sont appelés "services". Ces outils sont là pour l'aider à conserver son nick ou son channel ou encore à envoyer des messages à d'autres utilisateurs qui ne seraient pas connectes. Une aide est 
+disponible directement à partir de votre client. Pour cela, il vous suffit de taper "/msg NomDuService help". Par souci de cohérence, nous reprenons ici l'aide en ligne.
+<br>
+<br>
+NB: pour utiliser ces commandes, il faut taper dans la fenêtre de son client : <b>/msg NomDuService Commande Paramètres</b>
+</P>
+
+<h4>Nickserv</h4>
+<P>Nickserv est le premier des services que vous pourrez utiliser. Grossièrement, c'est lui qui assure le bail de votre nick 
+si vous décidez de l'enregistrer. C'est par son emploi que vous pourrez éviter que votre identité ne soit usurpée.</P>
+<P>
+<b> <span class="stress">REGISTER</span> - Enregistre un nick<br>
+Syntaxe: REGISTER motdepasse [email]</b><br>
+Enregistre votre nick dans la base de données de NickServ. Une fois
+que votre nick est enregistré, vous pouvez utiliser les
+commandes SET et ACCESS pour configurer votre nick comme
+vous le souhaitez. <br>
+Rappelez vous bien du mot de passe utilisé
+pendant l'enregistrement - vous en aurez besoin pour effectuer
+des changements sur votre nick plus tard. (Notez que les pass sont sensibles à la casse !)
+<br>
+<b><span class="stress">Conseils pour choisir un mot de passe:</span></b><br>
+Les mots de passe ne doivent pas être trop facilement
+devinables. Par exemple, utiliser votre vrai nom comme
+mot de passe est une mauvaise idée. Utiliser votre nick
+comme mot de passe est une idée encore pire ;) et, en
+fait, NickServ ne le permettra pas. De même, les mots de passe
+courts sont vulnérables aux recherches méthodiques,
+donc vous devez choisir un mot de passe d'au moins
+5 caractères. Enfin, le caractère espace ne peut être
+utilisé dans les mots de passe.
+Le paramètre email est optionnel et permet de définir
+un e-mail immédiatement. Toutefois, il peut être obligatoire
+sur certains réseaux.
+Votre vie privée est respectée; cet e-mail ne sera pas
+divulgué à des tierces personnes.
+Cette commande crée également un nouveau groupe pour votre
+nick. Celui-ci vous permettra plus tard d'enregistrer
+d'autres nicks en bénéficiant de la même configuration,
+du même jeu de memos, et des même privilèges sur vos
+channels.
+</P>
+<P><b> <span class="stress">GROUP</span> - Joint un groupe<br>
+Syntaxe: GROUP cible motdepasse</b><br>
+Cette commande joint votre nick au groupe du nick cible.
+motdepasse est le mot de passe du nick cible.
+<br>
+Joindre un groupe vous permettra de partager votre configuration,
+vos memos et vos privilèges de channel avec tous les nicks
+du groupe, et bien plus encore!
+<br>
+Un groupe existe tant qu'il est utile. Cela signifie que même
+si un des nicks du groupe est effacé, les éléments partagés
+sus-nommés sont conservés pour peu qu'il reste d'autres nicks
+dans le groupe.
+<br>
+Il est préférable d'utiliser cette commande avec un nick
+non enregistré puisqu'il sera automatiquement enregistré
+lorsque vous utiliserez cette commande. Vous pouvez l'utiliser
+avec un nick enregistré (pour changer votre groupe) uniquement
+si vos administrateurs l'autorisent.
+<br>
+Vous ne pouvez être que dans un groupe à la fois. La fusion
+de groupes n'est pas possible.
+<br>
+Note: tous les nicks du groupe ont le même mot de passe.
+</P>
+<P><b>  <span class="stress">IDENTIFY</span> - Vous identifie avec votre mot de passe<br>
+Syntaxe: IDENTIFY motdepasse</b><br>
+Informe NickServ que vous êtes vraiment le propriétaire de
+ce nick. Beaucoup de commandes demandent que vous soyez
+identifié avec cette commande avant de les utiliser. Le
+mot de passe est celui que vous avez donné avec la commande
+REGISTER.
+</P>
+<P><b>  ACCESS - Modifie la liste des adresses autorisées<br>
+Syntaxe: ACCESS ADD mask / ACCESS DEL mask / ACCESS LIST</b><br>
+Modifie ou affiche la liste d'accès de votre nick. C'est
+la liste des adresses qui seront automatiquement reconnues
+par NickServ comme autorisées à utiliser le nick. Si vous voulez
+utiliser le nick depuis une adresse différente, vous devez
+envoyer une commande IDENTIFY pour que NickServ vous reconnaisse.<br>
+Exemples:<br>
+ACCESS ADD anyone@*.bepeg.com<br>
+Autorise l'accès à l'utilisateur anyone d'une
+machine avec le domaine bepeg.com.<br>
+ACCESS DEL anyone@*.bepeg.com<br>
+Inverse la commande précédente.<br>
+ACCESS LIST<br>
+Affiche votre liste d'accès.
+</P>
+<P><b>  SET - Configure les options, protection comprise<br>
+Syntaxe: SET option paramètres</b><br>
+Configure diverses options du nick. option peut être:<br>
+<b>DISPLAY</b> Change l'affichage de votre groupe
+dans les services<br>
+<b>PASSWORD</b> Change le mot de passe de votre nick<br>
+<b>LANGUAGE</b> Change la langue dans laquelle les Services
+vous envoient leurs messages<br>
+<b>URL</b> Associe une adresse de site à votre nick<br>
+<b>EMAIL</b> Associe un e-mail à votre nick<br>
+<b>GREET</b> Associe un message d'accueil à votre nick<br>
+<b>KILL</b> Active ou désactive la protection<br>
+<b>SECURE</b> Active ou désactive la sécurité du nick<br>
+<b>PRIVATE</b> Empêche votre nick d'être affiché par
+/msg NickServ LIST<br>
+<b>HIDE</b> Cache certaines parties des informations du nick
+<b>MSG</b> Change le mode de communication des Services
+Pour utiliser cette commande, vous devez d'abord vous
+identifier avec votre mot de passe (/msg NickServ HELP
+IDENTIFY pour plus d'informations).
+</P>
+<P><b>  DROP - Annule l'enregistrement d'un nick<br>
+Syntaxe: DROP [nick]</b><br>
+Sans paramètre, efface votre nick de la base de données
+de NickServ.<br>
+Avec un paramètre, efface le nick donné de la base de
+données. Vous pouvez effacer n'importe quel nick de votre
+groupe sans privilèges particuliers. La possibilité
+d'effacer n'importe quel nick est cependant réservée aux
+Services admins.
+</P>
+<P><b>  RECOVER - Change le nick d'un utilisateur qui a pris votre nick<br>
+Syntaxe: RECOVER nick [motdepasse]</b><br>
+Vous permet de récupérer votre nick si quelqu'un d'autre
+l'a pris; c'est équivalent à ce que ce que NickServ fait
+automatiquement si quelqu'un essaie d'utiliser un nick
+protégé par SET KILL.<br>
+Quand vous utilisez cette commande, NickServ connectera un faux
+utilisateur avec le même nick que l'utilisateur dont
+vous essayez de récupérer le nick. Cela provoque la déconnexion
+par les serveurs IRC de l'autre utilisateur. Ce faux utilisateur
+restera connecté pendant une minute pour s'assurer que l'autre
+utilisateur ne se reconnecte pas immédiatement; après cette
+minute, vous pouvez reprendre votre nick. Alternativement,
+utilisez la commande RELEASE (/msg NickServ HELP RELEASE) pour
+reprendre votre nick plus tôt.<br>
+Pour utiliser la commande RECOVER pour un nick, l'adresse
+telle qu'elle est montrée dans un /WHOIS doit être sur la
+liste d'accès du nick, vous devez être identifié et dans
+le groupe du nick, ou vous devez fournir le mot de passe
+correct du nick.
+</P>
+<P><b>  RELEASE - Pour reprendre la tutelle de votre nick après un RECOVER<br>
+Syntaxe: RELEASE nick [motdepasse]</b><br>
+Ordonne à NickServ de supprimer toute tutelle sur votre nick
+provoquée par la protection de SET KILL ou
+l'utilisation de la commande RECOVER. Par défaut, les
+tutelles durent une minute; cette commande les
+arrête plus tôt.<br>
+Pour utiliser la commande RELEASE pour un nick, l'adresse
+telle qu'elle est montrée dans un /WHOIS doit être sur la
+liste d'accès du nick, vous devez être identifié et dans
+le groupe du nick, ou vous devez fournir le mot de passe
+correct du nick.
+</P>
+
+<P><b>  GHOST - <br>
+Syntaxe: GHOST nick [motdepasse]</b><br>
+Arrête une session IRC "fantôme" utilisant votre nick. Une
+session "fantôme" est un utilisateur non connecté
+actuellement, mais dont le serveur IRC croit qu'il l'est
+toujours pour une raison ou une autre. Habituellement,
+ceci arrive lorsque votre ordinateur plante ou que votre connexion
+à Internet s'arrête lorsque vous êtes sur IRC.<br>
+Pour utiliser la commande GHOST pour un nick, l'adresse
+telle qu'elle est montrée dans un /WHOIS doit être sur la
+liste d'accès du nick, ou vous devez fournir le mot de passe
+correct pour le nick.
+</P>
+<P><b>  INFO - Informations sur un nick<br>
+Syntaxe: INFO nick [ALL]</b><br>
+Affiche des informations sur le nick donné, telles que
+le propriétaire du nick, l'adresse avec laquelle il était
+connecté pour la dernière fois, et les options du nick. Si
+vous êtes identifié pour le nick pour lequel vous demandez
+des informations et que ALL est spécifié, toutes
+les informations seront affichées, qu'elles soient cachées
+ou non.
+</P>
+
+<P><b>  GLIST - Nicks dans votre groupe<br>
+Syntaxe: GLIST</b><br>
+Sans paramètre, liste tous les nicks qui sont dans votre groupe.
+</P>
+<P><b>  STATUS - Renvoie l'état d'un nick<br>
+Syntaxe: STATUS nick...</b><br>
+Retourne si l'utilisateur utilisant le nick donné est reconnu
+en tant que propriétaire du nick. La réponse a ce format:
+nick code-status
+où nick est le nick envoyé avec la commande, et
+code-status peut être l'un des suivants:<br>
+0 - cet utilisateur n'est pas online ou le nick n'est pas
+enregistré<br>
+1 - utilisateur non reconnu comme propriétaire<br>
+2 - utilisateur reconnu comme propriétaire uniquement via
+la liste d'accès<br>
+3 - utilisateur reconnu comme propriétaire via l'identification
+Jusqu'à seize nicks peuvent être envoyés avec chaque commande;
+le reste sera ignoré. Aucun message d'erreur n'est généré si
+aucun nick n'est donné.
+</P>
+
+<h4>Chanserv</h4>
+<P>ChanServ vous permet d'enregistrer et de contrôler divers
+aspects des channels.<br> 
+ChanServ empêche souvent de malicieux
+utilisateurs de faire des "take overs" sur les channels
+en limitant ceux qui sont autorisés à être channel
+operator.</P>
+<P><b>  <span class="stress">REGISTER</span> - Enregistre un channel<br>
+Syntaxe: REGISTER channel motdepasse description</b><br>
+Enregistre un channel dans la base de données de ChanServ. Pour
+utiliser cette commande, vous devez d'abord être un
+opérateur sur le channel que vous essayez
+d'enregistrer. Le mot de passe est utilisé avec la commande
+IDENTIFY pour permettre à d'autres de faire des changements
+dans la configuration du channel plus tard. Le dernier
+paramètre, qui doit être inclus, est une description
+générale du channel.<br>
+Quand vous enregistrez un channel, vous êtes enregistré
+comme "propriétaire" du channel. Le propriétaire du channel peut
+tout changer dans la configuration du channel; ChanServ donnera
+aussi automatiquement au propriétaire les droits d'opérateur
+du channel quand il ou elle joint le channel.
+Consultez la commande ACCESS pour
+savoir comment donner un sous ensemble de ces droits à
+d'autres utilisateurs du channel.<br>
+REMARQUE: Pour enregistrer un channel, vous devez
+d'abord enregistrer votre nick. Si ce n'est fait consultez l'aide sur les commande de nickserv.
+</P>
+<P><b>  IDENTIFY - Vous identifie avec votre mot de passe<br>
+Syntaxe: IDENTIFY channel motdepasse</b><br>
+Certifie à ChanServ que vous êtes autorisé à modifier le channel donné.
+Beaucoup de commandes demandent que vous utilisiez cette
+commande avant de les utiliser si vous n'êtes pas le propriétaire.
+Le mot de passe est le même que celui que vous avez envoyé avec la
+commande REGISTER.
+</P>
+<P><b>  SET - Configure les options et informations du
+channel<br>
+Syntaxe: SET channel option paramètres</b><br>
+Permet au propriétaire du channel de configurer diverses options
+du channel et d'autres informations.<br>
+Options disponibles:<br>
+<b>FOUNDER</b> Définit le propriétaire d'un channel<br>
+<b>SUCCESSOR</b> Définit le successeur d'un channel<br>
+<b>PASSWORD</b> Définit le mot de passe du channel<br>
+<b>DESC</b> Définit la description du channel<br>
+<b>URL</b> Associe un site avec un channel<br>
+<b>EMAIL</b> Associe un E-mail avec le channel<br>
+<b>ENTRYMSG</b> Définit un message envoyé aux utilisateurs
+qui entrent sur le channel<br>
+<b>TOPIC</b> Change le topic du channel<br>
+<b>BANTYPE</b> Définit comment les services mettent les bans
+sur le channel<br>
+<b>KEEPTOPIC</b> Maintient le topic quand le channel n'est
+pas utilisé<br>
+<b>TOPICLOCK</b> Le topic peut uniquement être changé avec
+SET TOPIC<br>
+<b>MLOCK</b> Oblige ou interdit des modes de channel<br>
+<b>PRIVATE</b> Cacher le channel de la commande LIST<br>
+<b>RESTRICTED</b> Restreindre l'accès au channel<br>
+<b>SECURE</b> Active les fonctions de sécurité de ChanServ<br>
+<b>SECUREOPS</b> Contrôle plus strict du status de chanop<br>
+<b>SECUREFOUNDER</b> Contrôle plus strict du status de propriétaire
+du channel<br>
+<b>SIGNKICK</b> Signe les kicks générés par la commande KICK<br>
+<b>OPNOTICE</b> Envoie une notice quand OP/DEOP sont utilisés<br>
+</P>
+<P><b>  <span class="stress">ACCESS</span> - Modifie la liste des utilisateurs privilégiés<br>
+Syntaxe: ACCESS channel ADD nick level<br>
+ACCESS channel DEL {nick | numéros d'entrée | liste}<br>
+ACCESS channel LIST [mask | liste]<br>
+ACCESS channel CLEAR</b><br>
+Gère la liste d'accès d'un channel. La liste d'accès
+détermine quels utilisateurs ont le status d'opérateur ou
+ont accès aux commandes de ChanServ pour le channel. Différents
+levels utilisateur donnent accès à différents lots de
+privilèges; /msg ChanServ HELP ACCESS LEVELS pour des informations
+plus détaillées. Tout nick qui n'est pas sur la liste
+d'accès a un level utilisateur de 0.<br
+La commande ACCESS ADD ajoute le nick donné à la liste
+d'accès avec le level utilisateur choisi; si le nick est
+déjà présent dans la liste, son niveau d'accès est remplacé
+par le level spécifié dans la commande. Le level spécifié
+doit être inférieur que celui qui utilise la commande, et
+si le nick est déjà dans la liste d'accès, le level
+d'accès actuel de ce nick doit être inférieur à celui de
+la personne utilisant la commande.<br>
+La commande ACCESS DEL supprime le nick donné de
+la liste d'accès. Si une liste de numéros d'entrées est
+donnée, ces entrées sont supprimées. (Consultez l'exemple
+pour LIST ci-dessous.)<br>
+La commande ACCESS LIST affiche la liste d'accès. Si un
+mask joker est donné, seules les entrées correspondantes
+au mask sont affichées. Si une liste de numéros d'entrée
+est donnée, seules ces entrées sont affichées; par exemple:<br>
+ACCESS #channel LIST 2-5,7-9<br>
+Liste toutes les entrées comprises entre 2 et 5 et
+entre 7 et 9.<br>
+La commande ACCESS CLEAR supprime toutes les entrées
+de la liste d'accès.
+</P>
+<P><b>  LEVELS - Redéfinit la signification des levels d'accès<br>
+Syntaxe: LEVELS channel SET type level<br>
+LEVELS channel {DIS | DISABLE} type<br>
+LEVELS channel LIST<br>
+LEVELS channel RESET</b><br>
+La commande LEVELS permet un contrôle précis de la
+signification des levels d'accès utilisés pour les channels.
+Avec cette commande, vous pouvez définir le level d'accès
+requis pour la majorité des fonctions de ChanServ. (Les commandes
+SET FOUNDER et SET PASSWORD, ainsi que cette commande,
+sont toujours réservées au propriétaire du channel.)<br>
+LEVELS SET permet au level d'accès pour une fonction ou un
+groupe de fonctions d'être changé. LEVELS DISABLE (ou DIS
+en abrégé) désactive une fonction automatique ou empêche l'accès
+à une fonction par quiconque sauf le propriétaire du channel.<br>
+LEVELS LIST montre les levels courants pour chaque fonction
+ou groupe de fonctions. LEVELS RESET réinitialise les levels
+avec les levels par défaut d'un channel fraichement créé
+(consultez HELP ACCESS LEVELS).<br>
+Pour une liste de caractéristiques et fonctions pour lesquels
+des levels peuvent être définis, consultez HELP LEVELS DESC.
+</P>
+<P><b>  AKICK - Gère la liste des kicks automatiques<br>
+Syntaxe: AKICK channel ADD mask [raison]<br>
+AKICK channel DEL mask<br>
+AKICK channel LIST [mask]<br>
+AKICK channel VIEW [mask]<br>
+AKICK channel ENFORCE<br>
+AKICK channel CLEAR</b><br>
+Gère la liste de kicks automatiques d'un channel. Si
+un utilisateur figurant sur la liste de kicks automatiques tente
+de joindre un channel, ChanServ bannira cet utilisateur du channel, et
+kickera ensuite l'utilisateur.<br>
+La commande AKICK ADD ajoute le nick donné ou le
+mask d'utilisateur à la liste de kicks automatiques. Si une
+raison est donnée avec la commande, cette raison sera utilisée
+lorsque l'utilisateur est kické; sinon, la raison par défaut est
+"You have been banned from the channel".<br>
+La commande AKICK DEL supprime le nick ou le masque donné
+de la liste de kicks automatiques. Cependant, il n'enlève pas
+les bans placés par une des entrées; ceux-là doivent être supprimés
+manuellement.<br>
+La commande AKICK LIST affiche la liste de kicks
+automatiques, ou optionnellement seulement les entrées de la liste
+de kicks automatiques qui correspondent au mask donné.<br>
+La commande AKICK VIEW est une version plus détaillée de
+la commande AKICK LIST.<br>
+La commande AKICK ENFORCE force ChanServ à bannir tous les
+utilisateurs présents sur le channel qui sont concernés
+par une des entrées de la liste de kicks automatiques.<br>
+La commande AKICK CLEAR supprime toutes les entrées
+de la liste de kicks automatiques.
+</P>
+<P>  DROP - Annule l'enregistrement d'un channel<br>
+Syntaxe: DROP channel<br>
+Efface le channel nommé.
+</P>
+<h4>Memoserv</h4>
+<P>Memoserv est le plus méconnu des services. C'est un utilitaire permettant aux utilisateurs IRC
+d'envoyer de courts messages aux autres utilisateurs IRC,
+qu'ils soient online à ce moment là ou non, ou aux
+channels(*). Le nick de l'expéditeur ET du destinataire ou
+le channel doivent être enregistrés pour pouvoir envoyer un
+memo.<br>
+(*) Par défaut, tout utilisateur avec au moins un level d'accès
+de 10 sur un channel peut lire ces memos du channel. Ceci
+peut être changé avec la commande LEVELS de ChanServ
+</P>
+<P><b> <span class="stress">SEND</span> - Envoie un memo à un nick ou un channel<br>
+Syntaxe: SEND {nick | channel} texte du memo</b><br>
+Envoie un memo au nick ou channel nommé contenant
+texte du memo. En envoyant à un nick, le destinataire
+sera informé qu'il/elle a un nouveau memo. Le nick/channel
+destinataire doit être enregistré.
+</P>
+
+<P><b> CANCEL - Annule le dernier memo que vous avez envoyé<br>
+Syntaxe: CANCEL {nick | channel}</b><br>
+Supprime le dernier memo que vous avez envoyé à un nick ou
+channel donné, à condition qu'il n'ait pas été lu lorsque vous
+utilisez la commande.
+</P>
+<P><b> <span class="stress">LIST</span> - Liste vos memos<br>
+Syntaxe: LIST [channel] [liste | NEW]</b><br>
+Liste tous les memos que vous avez actuellement. Avec NEW,
+liste uniquement les nouveaux memos (non lus). Les memos non
+lus sont marqués avec un "*" à gauche du numéro du memo. Vous
+pouvez également spécifier une liste de numéros, comme dans
+l'exemple ci dessous:<br>
+LIST 2-5,7-9<br>
+Liste les memos 2 à 5 et 7 à 9.
+</P>
+<P><b> <span class="stress">READ</span> - Lit un ou des memos<br>
+Syntaxe: READ [channel] {nombre | liste | LAST | NEW}</b><br>
+Vous envoie le texte des memos spécifiés. Si LAST est donné,
+vous envoie le dernier memo reçu. Si NEW est donné, vous
+envoie tous vos nouveaux memos. Sinon, vous envoie le memo
+numéro nombre. Vous pouvez également donner une liste
+de nombres, comme dans cet exemple:<br>
+READ 2-5,7-9<br>
+Affiche les memos 2 à 5 et 7 à 9.
+</P>
+<P><b> <span class="stress">DEL</span> - Efface un ou des memos</b><br>
+Syntaxe: DEL [channel] {nombre | liste | ALL}<br>
+Supprime le ou les memos spécifiés. Vous pouvez
+fournir plusieurs numéros de memos ou des ordres de nombres
+au lieu d'un nombre unique, comme dans le second exemple
+ci-dessous.
+Si ALL est donné, cela supprimera tous vos memos.
+Exemples:<br>
+DEL 1<br>
+Supprime votre premier memo.<br>
+DEL 2-5,7-9<br>
+Supprime les memos compris entre 2 et 5 et entre 7 et 9.
+</P>
+<P><b> SET - Définit des options relatifs aux memos<br>
+Syntaxe: SET option paramètres</b><br>
+Définit plusieurs options de memo. option peut être:<br>
+<b>NOTIFY</b> Définit si vous serez notifiés de vos
+nouveaux memos (seulement pour les
+nicks)<br>
+<b>LIMIT</b> Définit le nombre de memos maximum que
+vous pouvez recevoir
+</P>
+
+<h4>Botserv</h4>
+<P>BotServ vous permet d'avoir un bot sur votre channel.
+Il a été conçu pour les utilisateurs qui souhaitent simuler
+des bots pour bénéficier des options de protection de flood semblables à celles de bots.
+</P>
+
+<P><b>  <span class="stress">BOTLIST</span> - Liste des bots disponibles<br>
+Syntaxe: BOTLIST</b><br>
+Liste tous les bots disponibles sur ce réseau.</P>
+<P><b>  <span class="stress">ASSIGN</span> - Attribution d'un bot à un channel<br>
+Syntaxe: ASSIGN chan nick</b><br>
+Attribue le bot désigné par nick au channel chan. Vous
+BotServ- pouvez ensuite configurer le bot pour qu'il convienne à
+vos besoins.
+</P>
+<P><b>  SET - Configure les options du bot<br>
+Syntaxe: SET channel option parameters</b><br>
+Configure les options du bot. option peut être:<br>
+<b>DONTKICKOPS</b> Pour protéger les ops des kicks du bot<br>
+<b>DONTKICKVOICES</b> Pour protéger les voices des kicks du bot<br>
+<b>FANTASY</b> Active les commandes fantaisistes<br>
+<b>GREET</b> Active les messages d'accueil<br>
+<b>SYMBIOSIS</b> Permet au bot d'agir comme un vrai bot<br>
+</P>
+<P><b> <span class="stress">KICK</span> - Configure les kickers du bot<br>
+Syntaxe: KICK channel option parameters</b><br>
+<b>BOLDS</b> Détermine si le bot kicke les
+caractères gras<br>
+<b>BADWORDS</b> Détermine si le bot kicke les mots
+interdits<br>
+<b>CAPS</b> Détermine si le bot kicke les majuscules<br>
+<b>COLORS</b> Détermine si le bot kicke les couleurs<br>
+<b>FLOOD</b> Détermine si le bot kicke les utilisateurs
+qui floodent<br>
+<b>REPEAT</b> Détermine si le bot kicke les répétitions<br>
+<b>REVERSES</b> Détermine si le bot kicke les reverses<br>
+<b>UNDERLINES</b> Détermine si le bot kicke les caractères<br>
+soulignés<br>
+</P>
+<P><b> <span class="stress">BADWORDS</span> - Kick automatique sur liste de mots<br>
+Syntaxe: BADWORDS channel ADD mot [SINGLE | START | END]<br>
+BADWORDS channel DEL {mot | entry-num | liste}<br>
+BADWORDS channel LIST [mask | liste]<br>
+BADWORDS channel CLEAR</b><br>
+Gère la liste des mots interdits d'un channel. La liste
+des mots interdits détermine quels mots doivent être kickés
+quand le kicker de mots interdits est activé.<br>
+La commande BADWORDS ADD ajoute le mot donné à la liste
+de mots interdits. Si SINGLE est donné, un kick ne sera
+effectué que si un utilisateur dit le mot en entier. Si
+START est donné, un kick ne sera effectué que si un
+utilisateur dit un mot qui commande par mot. Si END
+est spécifié, un kick ne sera effectué que si un utilisateur
+dit un mot qui se termine par mot. Si vous ne spécifiez
+rien, un kick sera effectué chaque fois que mot est dit
+par un utilisateur.<br>
+La commande BADWORDS DEL supprime le mot donné de la liste
+des mots interdits. Si une liste de numéro d'entrées est
+donné, ces entrées seront supprimées. (Voyez l'exemple pour
+LIST ci-dessous.)<br>
+La commande BADWORDS LIST affiche la liste des mots
+interdits. Si un mask joker est donné, seules les entrées
+correspondantes au mask seront affichées. Si une liste
+de numéro d'entrées est donnée, seules ces entrées seront
+affichées; par exemple:<br>
+BADWORDS #channel LIST 2-5,7-9<br>
+Liste les mots interdits 2 à 5 et 7 à 9.<br>
+La commande BADWORDS CLEAR supprime toutes les entrées
+de la liste des mots interdits.<br>
+</P>
+<P><b> ACT - <br>
+Syntaxe: ACT channel texte</b><br>
+Fait faire au bot l'équivalent d'une commande "/me"
+sur le channel donné avec le texte donné.
+<P><b> INFO -<br>
+Syntax: INFO {chan | nick}</b><br>
+Vous permet de voir les informations BotServ pour un channel
+ou un bot. Si le paramètre est un channel, vous verrez
+des informations sur le channel tels que les kickers
+actifs. Si le paramètre est un nick, vous verrez des
+informations à propos d'un bot, comme le temps de
+création ou le nombre de channels auxquels il a été
+attribué.
+</P>
+<P><b> SAY -<br>
+Syntaxe: SAY channel texte</b><br>
+Fait dire au bot le texte donné sur le channel donné.
+</P>
+<P><b> UNASSIGN -<br>
+Syntaxe: UNASSIGN chan</b><br>
+Retire le bot d'un channel. Si vous utilisez cette commande,
+le bot ne joindra plus le channel. Cependant, la configuration
+du bot est conservée donc vous aurez toujours la possibilité
+de réattribuer un bot plus tard sans avoir à le reconfigurer
+entièrement.
+</P>
+
+
+
+
+<h4>A qui m'adresser en cas d'abuse ?</h4>
+<P>Les services sont une <b>fonctionnalité automatique</b> qui ne nécessite pas d'intervention de la part des irc opérateurs. D'expérience, nous
+savons que 99 % des abuses auxquelles sont confrontés les utilisateurs sont dues à <b>des erreurs ou des imprudences</b> de ces 
+mêmes users (les plus évidentes sont les mauvaises manipulations comme donner un op à une personne que vous ne connaitriez 
+pas sur un channel non enregistré ou encore l'emploi de mots de passe trop faciles à deviner). Dans ce genre de cas, 
+notre politique est simple : <b>NOUS N'INTERVENONS PAS</b>. Si, cependant, vous estimez que votre situation est différente, vous pouvez vous adresser à un ircop en prenant soin de lui fournir un maximum de logs.
+</P>
+
+<P>DrYorgos</P>
+
+{% endblock %}

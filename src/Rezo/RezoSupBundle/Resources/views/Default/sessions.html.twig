@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+
+
+{% block body %}
+
+<h2>Anti-clones : Limite de sessions</h2>
+
+<h4>Qu'est-ce qu'un clone&nbsp;?</h4>
+<p>Dans le langage IRC, un clone est une deuxième connexion provenant d'une IP déjà connectée. Cela s'obtient facilement en lançant par
+exemple une deuxième fois son client, ou lorsque plusieurs personnes passent par une même passerelle utilisant du NAT.</p>
+<p>Vu comme ça, ça ne semble pas poser de problème. Cependant, des personnes utilisent ce système pour déclencher des floods.</p>
+<p>En effet, normalement, un serveur IRC limite le nombre de messages qu'un client peut envoyer en même temps (ou plutôt dans un temps
+court). Ainsi, lorsqu'un client tente d'envoyer beaucoup de messages, le serveur bufferise ces données et introduit un temps
+d'attente, empêchant alors le client d'envoyer tous ces messages à la vitesse qu'il le voudrait.</p>
+<p>Vous avez sans doute déjà pu expérimenter ce phénomène lorsque, par exemple, vous vous reconnectez après une déconnexion, et que
+votre client rejoint automatiquement tous les canaux. Vous avez alors l'impression que vos messages ne sont plus envoyés, mais ils sont
+juste bufferisés par le serveur.</p>
+<p>Pour contourner cette protection, des gens (ou scripts) lancent alors plusieurs clients. Ainsi, chacun sont bufferisés séparément,
+mais si leur nombre est assez important, l'ensemble pourra quand même réussir à flooder (c'est-à-dire noyer sour un flot de
+messages, allant jusqu'à la déconnecter par <i>Ping Timeout</i> à cause du phénomène de bufferisation qui, ici, se retourne
+contre le client légitime) le client cible.</p>
+
+<h4>La solution RezoSup</h4>
+<p>C'est simple&nbsp;: nous limitons le nombre de clones à 3 par adresse IP. Cela signifie que si plus de 3 connexions proviennent de la même
+IP, tous les clones déconnectés du serveur, et un akill temporaire est mis sur cette IP, ce qui signifie que des connexions futures
+seront impossibles.</p>
+<p>Si vous avez besoin de plus de clones simultanés, par exemple dans le cas d'un réseau NATé, il vous suffit de nous écrire à
+<a href='mailto:akill@rezosup.net'>akill@rezosup.net</a>, et de nous décrire la situation (notamment le nombre maximum de machines qui
+se connecteront). Nous serons d'autant plus tenté de vous aider
+si, d'une part, la raison est bonne, et si, d'autre part, votre adresse IP est fixe.</p>
+
+{% endblock %}

@@ -1,0 +1,286 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+
+
+{% block body %}
+
+<h2>Les commandes IRC</h2>
+
+<h4>Introduction</h4>
+<p>Les commandes &eacute;crites en rouge sont celles r&eacute;serv&eacute;es aux 
+  channel operators (OP). Celles &eacute;crites en vert sont des commandes propres 
+  &agrave; Mirc :</p>
+<p><br>
+  <b> / - Rappelle la derni&egrave;re ligne que vous avez tap&eacute;e dans la 
+  fen&ecirc;tre active.</b><br>
+  <b>Syntaxe: /</b> </p>
+<p><b> /! - Rappelle la derni&egrave;re ligne que vous avez tap&eacute;e, mais 
+  dans n'importe quelle fen&ecirc;tre.</b><br>
+  <b>Syntaxe: /!</b></p>
+<p><span class="myirc"><b> /Abook</b></span><b> Lance le carnet d'adresses 
+  de Mirc.</b><br>
+  <b>Syntaxe: <span class="myirc">/Abook</span></b><br>
+  Si vous sp&eacute;cifiez un nickname apr&egrave;s la commande, si ce nick est 
+  dans le carnet d'adresses, vous aurez des informations sur la personne concern&eacute;e.</p>
+<p><b> /Action - Identique &agrave; la commande /Me (voire plus bas) qui est 
+  plus utilis&eacute;e.</b><br>
+  <b>Syntaxe: /Action</b> <b>&lt;votre texte&gt;</b></p>
+<p><b> /Admin - Affiche des informations administratives sur le serveur auquel 
+  vous &ecirc;tes conn&eacute;ct&eacute;s.</b><br>
+  <b>Syntaxe: /Admin</b><br>
+  Vous pouvez sp&eacute;cifier un nom de serveur.</p>
+<p><b> /Ame - Identique &agrave; la commande /Me, mais votre message sera envoy&eacute; 
+  dans tous les chans o&ugrave; vous vous trouvez.</b><br>
+  <b>Syntaxe: </b><b>/Ame &lt;votre message&gt;</b></p>
+<p><b> /Away - Signale votre absence.</b><br>
+  <b>Syntaxe: </b><b>/Away &lt;raison&gt;</b><br>
+  Tapez <b>/Away</b> + votre raison et lorsque quelqu'un s'adresse &agrave; vous, 
+  un message s'affiche lui indiquant que vous n'&ecirc;tes pas l&agrave;, ainsi 
+  que la raison que vous avez sp&eacute;cifi&eacute;e. Pour signaler que vous 
+  &ecirc;tes revenus, vous devez taper <b>/Away</b>.</p>
+<p><b> <span class="stress">/Ban </span>- Permet de bannir un utilisateur d'un 
+  channel.</b><br>
+  <b>Syntaxe: </b><b><span class="stress">/Ban &lt;nickname&gt;</span></b><br>
+  L'option -r permet de d&eacute;bannir un utilisateur. L'option -uX (ou X est 
+  un chiffre) permet de bannir un utilisateur pendant X secondes apr&egrave; quoi 
+  il sera automatiquement d&eacute;banni.</p>
+<p><b> /Channel - Affiche la fen&ecirc;tre Channel Central dans laquelle sont 
+  affich&eacute;s les modes du chan, le topic et la liste des ban.</b><br>
+  <b>Syntaxe: </b><b>/Channel</b> </p>
+<p><b> /<span class="myirc">Clear</span> - Efface le contenu de la fen&ecirc;tre 
+  active</b><br>
+  <b>Syntaxe: </b><b>/<span class="myirc">Clear</span></b></p>
+<p><b><span class="myirc"> /Clearall</span> - Efface le contenu dans toutes 
+  les fen&ecirc;tres ouvertes.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Clearall</span></b> </p>
+<p><b><span class="myirc"> /Closemsg</span> - Ferme la fen&ecirc;tre de private 
+  de la personne pr&eacute;cis&eacute;e.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Closemsg</span> <span class="myirc">&lt;nickname&gt;</span></b></p>
+<p><b> /Describe - Identique &agrave; la commande /Me, mais permet d'envoyer 
+  un message &agrave; une personne en private.</b><br>
+  <b>Syntaxe: </b><b>/Describe &lt;channel&gt; </b>ou<b> &lt;nickname&gt;</b> 
+  ou les deux suivi de votre message </p>
+<p><b> /Disconnect - Force le serveur &agrave; vous d&eacute;connecter.</b><br>
+  <b>Syntaxe: </b><b>/Disconnect</b></p>
+<p><b> /Dns - Permet de conna&icirc;tre l'adresse IP d'une personne.</b><br>
+  <b>Syntaxe: </b><b>/Disconnect</b> <b> &lt;nickname&gt;</b></p>
+<p><b><span class="myirc"> /Exit</span> - Force Mirc &agrave; se fermer.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Exit</span></b></p>
+<p><b><span class="myirc"> /Finger</span> - Permet de faire un finger &agrave; 
+  une personne sp&eacute;cifi&eacute;e. Cela permet d'en savoir plus sur une personne, 
+  mais il faut qu'elle ai lanc&eacute; un serveur finger pour que &ccedil;a fonctionne.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Finger</span></b></p>
+<p><b><span class="myirc"> /span</span> - Affiche la fen&ecirc;tre de gestion 
+  des polices de Mirc.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Finger</span></b></p>
+<p><b><span class="myirc"> /Help</span> - Lance l'aide de Mirc.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Help</span></b><br>
+  Vous pouvez taper un mot-cl&eacute; pour avoir de l'aide sur celui-ci.</p>
+<p><b> /Info - Affiche des informations diverses sur le serveur auquel vous &ecirc;tes 
+  connect&eacute;, dont l'heure et la date.</b><br>
+  <b>Syntaxe: </b><b>/Info</b><br>
+  Vous pouvez sp&eacute;cifier un nom de serveur.</p>
+<p><b> <span class="stress">/Invite</span> - Permet d'inviter les personnes 
+  de votre choix sur le chan de votre choix. </b><br>
+  <b>Syntaxe: </b><b><span class="stress">/Invite</span> <span class="stress">&lt;nickname&gt; 
+  &lt;channel&gt;</span><br>
+  </b>Si vous voulez inviter une personne qui n'est pas sur le m&ecirc;me chan 
+  que vous, vous devez rajouter le nom du chan o&ugrave; elle se trouve apr&egrave;s 
+  /Invite.</p>
+<p><b> /Ison - Permet de savoir si une personne est connect&eacute;e au r&eacute;seau.</b><br>
+  <b>Syntaxe: </b><b>/Ison &lt;nickname&gt;</b></p>
+<p><b> /Join - Permet de joindre un chan. Si le chan n'existe pas, il sera automatiquement 
+  cr&eacute;&eacute; et vous serez automatiquement OP.</b><br>
+  <b>Syntaxe: </b><b>/Join &lt;#nom du chan&gt;</b> </p>
+<p><b> <span class="stress">/Kick</span> - Permet de jeter quelqu'un d'un chan.</b><br>
+  <b>Syntaxe: </b><b><span class="stress">/Kick &lt;chan&gt; &lt;nickname&gt;</span></b> 
+  <br>
+  Vous pouvez ajouter une raison en la tapant apr&egrave;s le nick de la personne 
+  concern&eacute;e. Utilisez cette commande avec parcimonie, car sinon vous n'aurez 
+  plus grand monde avec qui parler.</p>
+<p><b> /Links - Affiche les liens d'un serveur.</b><br>
+  <b>Syntaxe: </b><b>/Links</b> </p>
+<p><b> /List - Affiche tous les chans valides d'un r&eacute;seau &agrave; l'exception 
+  de ceux en mode secret (+s).</b><br>
+  <b>Syntaxe: </b><b>/List</b><br>
+  Vous pouvez sp&eacute;cifier des options : -min # (# = un nombre) affiche tous 
+  les chans avec un minimum de personnes, -max# affiche tous les chans avec un 
+  maximum de personnes et #mot-cl&eacute; affiche tous les chans contenant la 
+  cha&icirc;ne de caract&egrave;res que vous avez sp&eacute;cifi&eacute;e</p>
+<p><b> /Lusers - Affiche des informations sur le nombre de conn&eacute;ct&eacute;s, 
+  de channels form&eacute;s, etc...</b><br>
+  <b>Syntaxe: /Lusers</b><br>
+  Vous pouvez sp&eacute;cifier un nom de serveur.</p>
+<p><b> /Me - Permet d'&eacute;crire une ligne en rose et qui commence par votre 
+  nick.</b><br>
+  <b>Syntaxe: </b><b>/Me &lt;votre texte&gt;</b></p>
+<p><b> <span class="stress">/Mode</span> - Permet de d&eacute;finir les modes 
+  d'un channel ou d'un utilisateur.</b><br>
+  <b>Syntaxe: </b><b><span class="stress">/Mode<br>
+  </span></b>Cette commande utilse des attributs, mais je ne vais pas m'attarder 
+  dessus, car les scripts pour Mirc remplacent parfaitement cette commande (et 
+  plein d'autres d'ailleurs).</p>
+<p><b> /Motd - Affiche le Message of the Day du serveur sur lequel vous &ecirc;tes 
+  connect&eacute;.</b><br>
+  <b>Syntaxe: /Motd<br>
+  </b>Vous pouvez sp&eacute;cifier un nom de serveur.</p>
+<p><b> /Msg - Permet d'envoyer un message &agrave; une personne dont vous avez 
+  sp&eacute;cifi&eacute; le nick ou &agrave; un chan dont vous avez sp&eacute;cifi&eacute; 
+  le nom.</b><br>
+  <b>Syntaxe: </b><b>/Msg &lt;nickname&gt; </b>ou<b> &lt;channel&gt; &lt;message&gt;</b> 
+</p>
+<p><b> /Names - Affiche tous les chans du r&eacute;seau avec tous les nicks des 
+  personnes connect&eacute;es.</b><br>
+  <b>Syntaxe: </b><b>/Names<br>
+  </b>Vous pouvez rajouter un nom de chan derri&egrave;re la commande pour avoir 
+  uniquement la liste des nicks de ce chan.</p>
+<p><b> /Nick - Permet de changer de nick (pseudo).</b><br>
+  <b>Syntaxe: </b><b>/Nick &lt;nouveau nick&gt;<br>
+  </b>Si vous prenez un nick enregistr&eacute;, un message vous en avertira et 
+  si vous ne changez pas dans la minute, vous serez automatiquement d&eacute;conn&eacute;ct&eacute;s.</p>
+<p><b> /Notice - Semblable &agrave; la commande /Msg, mais celle-la est utilis&eacute;e 
+  plus souvent pour les messages importants, car le texte s'affiche en couleur 
+  et dans la fen&ecirc;tre active de la personne &agrave; qui vous voulez envoyer 
+  un message.</b><br>
+  <b>Syntaxe: </b><b>/Notice</b> </p>
+<p><b><span class="myirc"> /Notify</span> - Si cette commande est tap&eacute;e 
+  seule et que votre notify list est vide, le message &quot;Your notify list is 
+  empty&quot; appara&icirc;tra.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Notify<br>
+  </span></b>Vous pouvez rajouter on ou off apr&egrave;s la commande pour activer 
+  ou d&eacute;sactiver la notify list. En ajoutant le nick d'une personne apr&egrave;s 
+  la commande, celle-ci sera ajout&eacute;e &agrave; votre notify list et vous 
+  serez avertis d&eacute;s qu'elle se connectera.</p>
+<p><b> <span class="stress">/Omsg</span> - Permet d'envoyer un message aux OP 
+  du channel dans lequel vous &ecirc;tes. Si vous sp&eacute;cifiez un nom de chan 
+  apr&egrave;s la commande, le message sera envoy&eacute; </b>aux OP de ce chan.<br>
+  <b>Syntaxe: </b><b><span class="stress"><b>/Omsg</b></span> <b><span class="stress">&lt;message&gt;</span></b></b> 
+</p>
+<p><b> <span class="stress">/Onotice </span>- Identique &agrave; /Omsg.</b><br>
+  <b>Syntaxe: </b><span class="stress"><b>/Onotice &lt;message&gt;</b></span></p>
+<p><b> /Part - Permet de quitter un channel sans quitter le serveur.</b><br>
+  <b>Syntaxe: </b><b>/Part<span class="stress"><br>
+  </span></b>Il est possible de quitter en m&ecirc;me temps tous les chans sur 
+  lesquels vous vous trouvez en indiquant leur nom apr&egrave;s la commande.</p>
+<p><b> /Partall - Permet de quitter en m&ecirc;me temps tous les channels sur 
+  lesquels vous &ecirc;tes sans pour autant quitter le serveur.</b><br>
+  <b>Syntaxe: </b><b>/Partall</b></p>
+<p><b> /Ping - Envoie une requ&ecirc;te ping &agrave; la personne dont vous avez 
+  sp&eacute;cifi&eacute; le nick.</b><br>
+  <b>Syntaxe: /Ping &lt;nickname&gt;<br>
+  </b> Cela sert &agrave; tester votre connection (lag, etc...). Vous pouvez aussi 
+  pinger un serveur.</p>
+<p><b> /Play - Affiche un fichier texte.</b><br>
+  <b>Syntaxe: </b><b>/Play &lt;nom du fichier&gt;<br>
+  </b>Vous pouvez indiquer le d&eacute;lai d'affichage de chaque ligne en le sp&eacute;cifiant 
+  en millisecondes (ex : /Play mon_fichier.txt 1000 affichera une ligne toutes 
+  les secondes). Vous pouvez &eacute;galement afficher ce fichier dans le channel 
+  de votre choix et &agrave; la personne de votre choix, il suffit juste de les 
+  sp&eacute;cifier apr&egrave;s la commande. Sans arguments, le texte sera affich&eacute; 
+  dans le chan o&ugrave; vous &ecirc;tes avec un d&eacute;lai d'une ligne par 
+  secondes.</p>
+<p><b> <span class="stress">/Pop</span> - Permet d'oper une personne apr&egrave;s 
+  un d&eacute;lai sp&eacute;cifi&eacute; en secondes.</b><br>
+  <b>Syntaxe: </b><b><span class="stress">/Pop &lt;d&eacute;lai&gt; &lt;channel&gt; 
+  &lt;nickname&gt;</span></b> </p>
+<p><b><span class="myirc"> /Protect</span> - Sans arguments, cette commande 
+  vous dit si votre protect list est active ou non.</b><br>
+  <b>Syntaxe: <span class="myirc">/Protect<br>
+  </span></b>Pour prot&eacute;ger une personne, vous devez entrer son nick apr&egrave;s 
+  la commande. Pour enlever une personne de votre protect list, vous devez rajouter 
+  -r apr&egrave;s la commande et le nick de la personne. Lorsqu'une personne est 
+  dans votre protect list, si elle se fait kicker, Mirc kickera automatiquement 
+  la personne responsable du kick. </p>
+<p><b> /Query - Identique &agrave; la commande /Msg, sauf qu'une fen&ecirc;tre 
+  s'ouvre dans laquelle s'affiche le message que vous avez envoy&eacute;.</b><br>
+  <b>Syntaxe: </b><b>/Query</b> </p>
+<p><b> /Quit - Permet de quitter l'IRC. Vous pouvez laisser un message en partant 
+  en le tapant apr&egrave;s la commande.</b><br>
+  <b>Syntaxe: </b><b>/Quit</b> </p>
+<p><b> /Raw help - Lance l'aide du r&eacute;seau sur lequel vous &ecirc;tes conn&eacute;ct&eacute;s.</b><br>
+  <b>Syntaxe: /Raw help<br>
+  </b>Cette commande n'a pas le m&ecirc;me r&eacute;sultat sur tous les r&eacute;seaux. 
+</p>
+<p><b><span class="myirc"> /Remote</span> - Sans arguments, cette commande 
+  vous dit si les remotes sont activ&eacute;s ou pas.</b><br>
+  <b>Syntaxe: </b><b><span class="myirc">/Remote</span></b><br>
+  En ajoutant on ou off, vous les activez ou les d&eacute;sactivez. Les remotes 
+  permettent de cr&eacute;er des scripts qui r&eacute;agissent &agrave; certains 
+  &eacute;venements. Je vous conseille de lire l'aide de Mirc &agrave; ce sujet, 
+  car cela est assez complexe. </p>
+<p><b> /Say - Affiche le texte qui suit la commande.</b><br>
+  <b>Syntaxe: /Say &lt;ce que vous voulez dire&gt;<br>
+  </b>Cela est tr&egrave;s pratique pour les caract&egrave;res sp&eacute;ciaux 
+  par exemple. </p>
+<p><b> /Server - Vous d&eacute;connecte du serveur actuel et vous reconnecte 
+  au serveur sp&eacute;cifi&eacute;.</b><br>
+  <b>Syntaxe: </b><b>/Server</b></p>
+<p><b> /Speak - Identique &agrave; la commande /Say.</b><br>
+  <b>Syntaxe: </b><b>/Speak &lt;ce que vous voulez dire&gt;</b> </p>
+<p><b>/Stats - Affiche des statistiques.</b><br>
+  <b>Syntaxe: </b><b>/Stats<span class="stress"><br>
+  </span></b> Cette commande s'utilise avec les options suivantes : <br>
+  c : C/N-lines. Connections du serveur.<br>
+  i : I-lines. liste des hostmask des utilisateurs accept&eacute;s sur le serveur. 
+  <br>
+  k : K-lines. liste des bannis du serveur.<br>
+  l : liens actifs du serveur.<br>
+  m : temps des commandes, ou liste des messages valides. <br>
+  o : O-lines. Liste des IRCop.<br>
+  u : Uptime. heure d'activation du serveur.<br>
+  x : liste des serveurs non conn&eacute;ct&eacute;s.</p>
+<p><b> /Time - Affiche l'heure du serveur sur lequel vous &ecirc;tes conn&eacute;ct&eacute;s, 
+  ainsi que le nombre d'heures en plus ou en moins par rapport &agrave; l'heure 
+  GMT.</b><br>
+  <b>Syntaxe: </b><b>/Time</b> </p>
+<p><b> /Timestamp - Sans argument, cette commande vous dit si l'affichage de 
+  l'heure avant chaque phrase est actif ou non.</b><br>
+  <b>Syntaxe: /Timestamp<br>
+  </b>Pour l'activer ou le d&eacute;sactiver, vous devez rajouter on ou off apr&eacute;s 
+  la commande. </p>
+<p><b> /Topic - Permet d'afficher le topic du channel sp&eacute;cifi&eacute; 
+  ou alors de le changer si vous le taper apr&egrave;s la commande.</b><br>
+  <b>Syntaxe: </b><b>/Topic</b> <br>
+  Si vous n'&ecirc;tes pas OP, vous ne pouvez changer le topic d'un chan que si 
+  ce dernier n'est pas en mode +t (Only ops change Topic). Si vous &ecirc;tes 
+  OP sur un chan, mais que ce n'est pas vous qui avez cr&eacute;&eacute; ce chan 
+  et que le topic est prot&eacute;g&eacute; par Chanserv, vous ne pouvez pas le 
+  changer. </p>
+<p><b><span class="myirc"> /Url</span> - Affiche la fen&ecirc;tre URL List.</b><br>
+  <b>Syntaxe: <span class="myirc">/Url<br>
+  </span></b>En ajoutant on ou off, vous activez ou d&eacute;sactivez la fonction 
+  qui consiste &agrave; stocker automatiquement les url sp&eacute;cifi&eacute;es 
+  lors de vos conversations. D&eacute;s qu'un utilisateur sp&eacute;cifit une 
+  url (http://, ftp://, ftp., gopher://, www.), elle est automatiquement enregistr&eacute;e 
+  dans votre URL List si cette derni&amp;eagrave;re est active. </p>
+<p><b> /Userhost - Permet d'afficher le userhost d'une personne.</b><br>
+  <b>Syntaxe: </b><b>/Userhost &lt;nickname&gt;</b> </p>
+<p><b> /Users - Affiche des informations sur les connections au serveur sur lequel 
+  vous vous trouvez.</b><br>
+  <b>Syntaxe: </b><b>/Users</b> <br>
+  Vous pouvez sp&eacute;cifier un nom de serveur. </p>
+<p><b> /Uwho - Identique &agrave; la commande /Whois, mais affiche le r&eacute;sultat 
+  dans le carnet d'adresses de Mirc.</b><br>
+  <b>Syntaxe: </b><b>/Uwho</b> </p>
+<p><b> /Version - Affiche le num&eacute;ro du serveur auquel vous &ecirc;tes 
+  connect&eacute;s.</b><br>
+  <b>Syntaxe: </b><b>/Version</b><br>
+  Vous pouvez sp&eacute;cifier un nom de serveur. </p>
+<p><b> /Who - Permet d'afficher des informations sur tous les connect&eacute;s.</b><br>
+  <b>Syntaxe: </b><b>/Who</b><br>
+  Vous pouvez utiliser cette commande sur un seul chan en sp&eacute;cifiant le 
+  nom de celui-ci apr&egrave;s la commande. </p>
+<p><b> /Whois - Permet d'obtenir des informations sur la personne sp&eacute;cifi&eacute;e</b><br>
+  <b>Syntaxe: </b><b>/Whois &lt;nickname&gt;</b></p>
+<p>
+  <b> /Whowas - Identique &agrave; la commande /Whois, mais utilisez celle-la 
+  lorsque la personne qui vous int&eacute;resse n'est plus conn&eacute;ct&eacute;e 
+  depuis peu de temps </b><br>
+  <b>Syntaxe: </b><b>/Whowas &lt;nickname&gt;</b></p>
+<p> <br>
+  <br>
+</p>
+
+{% endblock %}

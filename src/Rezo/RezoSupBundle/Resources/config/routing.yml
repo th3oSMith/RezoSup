@@ -32,5 +32,34 @@ news_post:
     pattern:  /post/
     defaults: { _controller: RezoRezoSupBundle:Default:newsPost }
 
+servers:
+    pattern:  /servers/
+    defaults: { _controller: RezoRezoSupBundle:Default:servers }
+
+map:
+    pattern: /map/
+    defaults: { _controller: RezoRezoSupBundle:Default:map }
+
+sessions:
+    pattern: /sessions/
+    defaults: { _controller: RezoRezoSupBundle:Default:sessions }
+
+proxy:
+    pattern: /proxy/
+    defaults: { _controller: RezoRezoSupBundle:Default:proxy }
+
+faq:
+    pattern: /faq/
+    defaults: { _controller: RezoRezoSupBundle:Default:faq }
+
+services:
+    pattern: /services/
+    defaults: { _controller: RezoRezoSupBundle:Default:services }
+
+
+commandes:
+    pattern: /commandes/
+    defaults: { _controller: RezoRezoSupBundle:Default:commandes }
+
 
     

@@ -51,23 +51,20 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Serveur<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Liste</a></li>
-                  <li><a href="#">Carte</a></li>
+                  <li><a href="{{path('servers')}}">Liste</a></li>
+                  <li><a href="{{path('map')}}#">Carte</a></li>
                 </ul>
               </li>             
-              <li><a href="#">Statistiques</a></li>
+              <!--<li><a href="#">Statistiques</a></li>-->
               <li><a href="{{path('charte')}}">Charte</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Se connecter</a></li>
-                  <li><a href="#">Les serveurs</a></li>
-                  <li><a href="#">Commandes IRC</a></li>
-                  <li><a href="#">Comandes des services</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Proxys ouverts</a></li>
-                  <li><a href="#">Les virus</a></li>
-                  <li><a href="#">Limites de session</a></li>
+                  <li><a href="{{path('commandes')}}">Commandes IRC</a></li>
+                  <li><a href="{{path('services')}}">Commandes des services</a></li>
+                  <li><a href="{{path('faq')}}">FAQ</a></li>
+                  <li><a href="{{path('proxy')}}">Proxys ouverts</a></li>
+                  <li><a href="{{path('sessions')}}">Limites de session</a></li>
                 </ul>
               </li>
               <li><a href="#">Client web IRC</a></li>

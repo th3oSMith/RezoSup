@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+
+
+{% block body %}
+
+<h2>Foire Aux Questions</h2>
+
+<h4>Comment dois-je faire pour me connecter ?</h4>
+<P>C'est très simple. Il faut soit utiliser un client web comme celui que vous pouvez trouver <A HREF="http://client01.chat.mibbit.com/?server=irc.rezosup.org" target="_blank">ici</A> 
+(compatible avec les navigateurs web récents) soit un vrai client IRC 
+qui a l'avantage d'être plus esthétique et plus 
+pratique (il est notamment possible d'automatiser un certain nombre de tâches) comme <A href="http://www.mirc.co.uk/get.html">Mirc</a> pour Windows ou X-Chat pour les Unix .
+</P>
+<P>
+Ensuite, il ne vous reste qu'une chose à faire: vous connecter sur irc.rezosup.org ou directement sur les <A href="{{path('servers')}}">serveurs</A> publics (le port standard de connexion est le 6667).<br>
+
+</P>
+
+<h4>Ok maintenant que je suis connecté, où est-ce que je peux aller ?</h4>
+<P>Le principe d'IRC est celui de liberté: vous pouvez créer votre channel et inviter vos amis à vous rejoindre. Sinon, vous trouverez toujours un "irc addict" avec qui discuter sur des channels comme #tchatche ou comme #int #escg #edhec
+</P>
+
+<h4>Que sont Nickserv, Chanserv, Memoserv et Botserv et quelle est leur utilité ?</h4>
+<P>Nickserv, Chanserv, Memoserv et Botserv sont des services. Les services sont des programmes qui servent à simplifier la gestion des nicks et des chans. Nickserv vous permet d'enregistrer votre nick (ou pseudo) c'est à dire d'en devenir le propriétaire tout comme chanserv vous autorise à posséder un channel et à ajouter dans la liste des utilisateurs vos amis. Memoserv gère quant à lui 
+la messagerie. C'est par son emploi, que vous pourrez envoyer des messages à des personnes qui ne sont pas "connectées".
+Enfin Botserv est un service qui vous permet de simuler un bot. Il permet notamment de définir des protections contre les floods utilisateurs.</P>
+<P>Pour en apprendre plus sur le fonctionnement de ces quatre services, il vous suffit de faire un <i>/msg NomDuService help</i>.
+</P>
+
+<h4>Ces concepts sont encore pour moi assez flous ou j'ai un problème qui n'est pas couvert par cette FAQ. A qui dois-je m'adresser pour avoir une réponse rapide?</h4>
+<P>Vous pouvez vous adresser directement à l'admin de votre serveur. Par exemple, l'admin du serveur de l'Institut National des 
+Télécommunications est Flash, celui de l'ESC Grenoble Flav. 
+Pour savoir qui est votre admin et quelle est son adresse mail, exécutez la commande <i>/admin</i> Sinon vous pouvez contacter 
+en ligne les ircops. La liste des ircops de garde peut être obtenue par la commande <i>/stats p nom_du_serveur</i>.
+</P>
+
+
+<h4>C'est quoi un ircop ?</h4>
+<P>C'est la personne à contacter dès que vous avez un souci lié au serveur ou quand vous voulez formuler
+une plainte contre personne malveillante sur IRC. 
+</P>
+
+<h4>C'est quoi le @ que certains ont devant leur nick ?</h4>
+<P>Le @ signifie que la personne est opérateur du chan dans lequel vous vous trouvez. Cette personne dispose de droits d'administration du channel : il peut kicker, voicer, bannir, inviter des gens et changer les modes du channel.
+</P>
+
+<h4>C'est quoi le + que certains ont devant leur nick ?</h4>
+<P>Le + signifie que la personne est voic&eacute;e. Aujourd'hui pour 
+  la majorit&eacute; des channels cette distinction n'a pas de signification particuli&egrave;re, 
+    c'est g&eacute;n&eacute;ralement un signe pour diff&eacute;rencier les amis 
+      des op&eacute;rateurs de l'utilisateur lambda.</p>
+
+      
+<h4>A qui m'adresser pour des questions plus générales sur RezoSup?</h4>
+      
+<P>      Si vous avez la moindre question, n'h&eacute;sitez pas &agrave; nous 
+        la poser sur irc sur le chan #help ou #opers. Ce sera avec plaisir que nous y répondrons.
+	Sinon, vous pouvez toujours &eacute;crire 
+	  un mail &agrave; <a href="mailto:help@rezosup.net">la hotline</a> de RezoSup.
+</P>
+
+{% endblock %}

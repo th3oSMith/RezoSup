@@ -22,6 +22,43 @@ class DefaultController extends Controller
         return $this->render('RezoRezoSupBundle:Default:charte.html.twig');
     }
     
+        public function serversAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:servers.html.twig');
+    }
+    
+        public function mapAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:map.html.twig');
+    }
+    
+        public function sessionsAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:sessions.html.twig');
+    }
+    
+        public function proxyAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:proxy.html.twig');
+    }
+    
+        public function faqAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:faq.html.twig');
+    }
+    
+        public function servicesAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:services.html.twig');
+    }
+    
+    
+        public function commandesAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:commandes.html.twig');
+    }
+    
+    
         public function newsPostAction()
     {
 		

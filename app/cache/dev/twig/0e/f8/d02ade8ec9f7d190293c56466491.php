@@ -89,11 +89,17 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
               <li class=\"dropdown\">
                 <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Serveur<b class=\"caret\"></b></a>
                 <ul class=\"dropdown-menu\">
-                  <li><a href=\"#\">Liste</a></li>
-                  <li><a href=\"#\">Carte</a></li>
+                  <li><a href=\"";
+        // line 54
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("servers"), "html", null, true);
+        echo "\">Liste</a></li>
+                  <li><a href=\"";
+        // line 55
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("map"), "html", null, true);
+        echo "#\">Carte</a></li>
                 </ul>
               </li>             
-              <li><a href=\"#\">Statistiques</a></li>
+              <!--<li><a href=\"#\">Statistiques</a></li>-->
               <li><a href=\"";
         // line 59
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("charte"), "html", null, true);
@@ -101,20 +107,32 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
               <li class=\"dropdown\">
                 <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Guide<b class=\"caret\"></b></a>
                 <ul class=\"dropdown-menu\">
-                  <li><a href=\"#\">Se connecter</a></li>
-                  <li><a href=\"#\">Les serveurs</a></li>
-                  <li><a href=\"#\">Commandes IRC</a></li>
-                  <li><a href=\"#\">Comandes des services</a></li>
-                  <li><a href=\"#\">FAQ</a></li>
-                  <li><a href=\"#\">Proxys ouverts</a></li>
-                  <li><a href=\"#\">Les virus</a></li>
-                  <li><a href=\"#\">Limites de session</a></li>
+                  <li><a href=\"";
+        // line 63
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("commandes"), "html", null, true);
+        echo "\">Commandes IRC</a></li>
+                  <li><a href=\"";
+        // line 64
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("services"), "html", null, true);
+        echo "\">Commandes des services</a></li>
+                  <li><a href=\"";
+        // line 65
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("faq"), "html", null, true);
+        echo "\">FAQ</a></li>
+                  <li><a href=\"";
+        // line 66
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("proxy"), "html", null, true);
+        echo "\">Proxys ouverts</a></li>
+                  <li><a href=\"";
+        // line 67
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sessions"), "html", null, true);
+        echo "\">Limites de session</a></li>
                 </ul>
               </li>
               <li><a href=\"#\">Client web IRC</a></li>
               <li><a href=\"mailto:rezosup@rezosup.net\">Contact</a></li>
               <li><a href=\"";
-        // line 75
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("thanks"), "html", null, true);
         echo "\">Remerciements</a></li>
             </ul>
@@ -133,9 +151,9 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
 \t\t</div>
 \t<div class=\"txt\">\t
 \t";
-        // line 91
+        // line 88
         $this->displayBlock('body', $context, $blocks);
-        // line 104
+        // line 101
         echo "\t</div>
 </div>
 
@@ -144,7 +162,7 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
     <!-- Placed at the end of the document so the pages load faster -->
     <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js\"></script>
 \t<script src=\"";
-        // line 111
+        // line 108
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
   </body>
@@ -158,7 +176,7 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
         echo "RezoSup";
     }
 
-    // line 91
+    // line 88
     public function block_body($context, array $blocks = array())
     {
         echo "<p>
@@ -188,6 +206,6 @@ class __TwigTemplate_0ef8d02ade8ec9f7d190293c56466491 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  162 => 91,  156 => 5,  148 => 111,  139 => 104,  137 => 91,  118 => 75,  99 => 59,  80 => 43,  74 => 40,  43 => 12,  39 => 11,  34 => 9,  27 => 5,  21 => 1,);
+        return array (  180 => 88,  174 => 5,  166 => 108,  157 => 101,  155 => 88,  136 => 72,  128 => 67,  124 => 66,  120 => 65,  116 => 64,  112 => 63,  105 => 59,  98 => 55,  94 => 54,  80 => 43,  74 => 40,  43 => 12,  39 => 11,  34 => 9,  27 => 5,  21 => 1,);
     }
 }

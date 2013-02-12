@@ -40,10 +40,24 @@ class __TwigTemplate_afa97588a8a27fc96fdae2d994bd4d4f extends Twig_Template
 <h3>Bienvenue sur le site web des opérateurs IRC du réseau RezoSup</h3><br/>
 <p>RezoSup est le diminutif de Réseau de serveurs IRC d'établissements de l'enseignement supérieur. Il a été conçu et est géré
 par des étudiants bénévoles pour promouvoir la communication grâce à IRC.</p>
-<p>Sur ce site, vous pouvez consulter la liste des opérateurs IRC par serveur dans la rubrique <a href=trombi.php><b>IRC operators</b></a> et la liste des <a href=liste.php><b>serveurs</b></a> du regroupement.</p>
-<p>Vous pouvez également voir plusieures statistiques des canaux de RezoSup dans la rubrique <a href=stats.php><b>Statistiques</b></a>.</p>
-<p>Enfin, vous pouvez découvrir en exclusivité un tout nouveau et tout beau client irc : <A href=\"http://kini.rezosup.net\"><b>KINI</b></A>.</p>
-<p>N'hésitez pas à faire un tour sur le site officiel de <a href=\"http://www.rezosup.org\"><b>Rezosup</b></a> pour plus d'informations sur le regroupement en lui-même.</p>
+<h4>C'est quoi, l'IRC&nbsp;?</h4>
+<P>IRC signifie &laquo;&nbsp;Internet Relay Chat&nbsp;&raquo;. En fait, c'est un syst&egrave;me pour dialoguer sur Internet, en mode texte, un peu comme une messagerie sur Minitel. Ce moyen de communication fit son apparition en 1988, alors m&ecirc;me que les liaisons transatlantiques n'existaient pas encore. A cette &eacute;poque, le besoin d'un canal de communication multi-utilisateur se faisait cruellement sentir.</P>
+<P>Des r&eacute;seaux ont alors &eacute;t&eacute; mont&eacute;s. A pr&eacute;sent, pour ne citer que les plus nombreux et plus importants, il existe <A HREF=\"http://www.efnet.org/\">EFNet</A>, <A HREF=\"http://www.dal.net/\">DALNet</A>, <A HREF=\"http://www.undernet.org/\">UnderNet</A>.</P>
+<h4>Pourquoi un nouveau r&eacute;seau&nbsp;?</h4>
+<P>RezoSup ne suit pas la même logique que les autres regroupements comme EFNET, IRCNET, etc. Il a été créé par des étudiants d'écoles de commerce et d'ingénieurs pour leur donner un moyen simple et instantané de communiquer entre eux. Il ne vise donc pas à avoir un nombre énorme de clients mais plutôt une cible restreinte de qualité.</P>
+
+<P>Par IRC, il est donc possible aux utilisateurs de dialoguer entre &eacute;coles, ou &agrave; l'int&eacute;rieur d'une m&ecirc;me &eacute;cole, pour des motifs aussi vari&eacute;s que la gestion de projets ou la commande de pizzas&nbsp;!</P>
+
+<h4>Des services et des bots</h4>
+<P>La majorit&eacute; des regroupements pr&eacute;f&egrave;rent laisser une totale libert&eacute; &agrave; leurs utilisateurs. Ainsi, sur certains r&eacute;seaux IRC, tels que EFNet ou IRCNet, les channels ainsi
+que les nicks n'appartiennent &agrave; personne. En contrepartie, les utilisateurs doivent d&eacute;velopper un certain nombre de connaissances, notamment techniques, s'ils souhaitent conserver les chans qu'ils ont cr&eacute;&eacute;s.
+RezoSup part d'un autre principe&nbsp;: l'utilisateur reste enti&egrave;rement libre de faire ce qu'il veut &agrave; condition de ne pas d&eacute;ranger le
+bon fonctionnement des serveurs, mais RezoSup met &agrave; sa disposition quelques outils qui sont appel&eacute;s <A HREF=\"services.phtml\">des <I>services</I></A>. Ces outils sont l&agrave; pour l'aider &agrave; conserver son nick ou son channel ou encore &agrave; envoyer des messages &agrave; d'autres utilisateurs qui ne seraient pas connect&eacute;s.
+</p>
+<p>Les bots, dans cette logique, ne sont pas ce qui &laquo;&nbsp;garantit la propri&eacute;t&eacute;&nbsp;&raquo; d'un chan et aucun op&eacute;rateur irc ne sera dispos&eacute; &agrave; vous aider si vous n'avez pas enregistr&eacute; votre channel. La pr&eacute;sence des bots est tol&eacute;r&eacute;e uniquement 
+pour apporter des fonctionnalit&eacute;s suppl&eacute;mentaires aux utilisateurs. Bien s&ucirc;r, toute utilisation de <I>spambot</I> ou de <I>warbot</I> est &agrave; proscrire, les op&eacute;rateurs chasseront impitoyablement ces bots du serveur et prendront les mesures n&eacute;cessaires pour ne plus les revoir.
+</P>
+
 ";
     }
 
