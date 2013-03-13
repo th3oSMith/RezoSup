@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Inscription{% endblock %}
+
+{% block body %}
+
+        {% for key, message in app.session.getFlashes() %}
+        
+        <div class="{{ key }}">
+            <h3>{{ message|trans({}, 'FOSUserBundle') }}</h3>
+        </div>
+        
+        {% endfor %}
+
+        <div class="bs-docs">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+{% endblock %}
+
+
+
+

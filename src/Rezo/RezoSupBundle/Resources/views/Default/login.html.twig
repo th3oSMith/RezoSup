@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Connexion{% endblock %}
+
+{% block body %}
+
+{% if is_granted('ROLE_USER') %}
+<h3>Vous êtes déjà connecté</h3>
+{% else %}
+{% render "FOSUserBundle:Security:login" %}
+{% endif %}
+
+<a href="{{path('fos_user_registration_register')}}">Inscription</a>
+
+{% endblock %}

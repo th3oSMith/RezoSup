@@ -1,5 +1,5 @@
 home:
-    pattern:  /home/
+    pattern: /  
     defaults: { _controller: RezoRezoSupBundle:Default:index }
 
 thanks:
@@ -61,5 +61,32 @@ commandes:
     pattern: /commandes/
     defaults: { _controller: RezoRezoSupBundle:Default:commandes }
 
+annuaire:
+    pattern: /annuaire/
+    defaults: { _controller: RezoRezoSupBundle:Default:annuaire }
 
+listeAnnuaireUser:
+    pattern: /annuaire/liste/{username}//{operateur}
+    defaults: { _controller: RezoRezoSupBundle:Ajax:liste, server_id:-1 }
+
+listeAnnuaireFull:
+    pattern: /annuaire/liste/{username}/{server_id}/{operateur}
+    defaults: { _controller: RezoRezoSupBundle:Ajax:liste }
+
+listeAnnuaireEmpty:
+    pattern: /annuaire/liste///{operateur}
+    defaults: { _controller: RezoRezoSupBundle:Ajax:liste, server_id:-1, username:%}
+
+listeAnnuaireServer:
+    pattern: /annuaire/liste//{server_id}/{operateur}
+    defaults: { _controller: RezoRezoSupBundle:Ajax:liste, username:%}
+
+
+connexion:
+    pattern: /login
+    defaults: { _controller: RezoRezoSupBundle:Default:login}
+
+redirect:
+    pattern: /redirect
+    defaults: { _controller: RezoRezoSupBundle:Default:redirect}
     

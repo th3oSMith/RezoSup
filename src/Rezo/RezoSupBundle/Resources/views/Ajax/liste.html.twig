@@ -1,0 +1,34 @@
+{% if liste|length >1 and liste|length<15 %}
+<ul>
+{% for entry in liste %}
+<li><a href="#" onclick="$('#username').val('{{entry.pseudo1}}');getListe();">{{entry.pseudo1}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+{% if liste|length == 0 %}
+Pas de résultat
+{% else %}
+<div id="fiche">
+	<ul>
+	<li><b>{{liste[0].pseudo1}}</b></li>
+{% if liste[0].op %}
+	<li>Identité : {{liste[0].prenom}} {{liste[0].nom}}</li>
+{% endif %}	
+	<li>Alternatif : {{liste[0].pseudo2}}</li>
+{% if liste[0].op %}
+	<li>Email : {{liste[0].email}}</li>
+{% endif %}	
+	<li>Sexe : {{liste[0].sexe}}</li>
+	<li>Date de Naissance : {{liste[0].naissance|date('d-m-Y')}}</li>
+	<li>Serveur : {{liste[0].serveur}}</li>
+	<li>Channels fréquentés : {{liste[0].channels}}</li>
+	<li>Ville : {{liste[0].ville}}</li>
+	<li>Site web : <a href="{{liste[0].url}}">{{liste[0].url}}</a></li>
+	<li>Description : {{liste[0].message}}</li>
+{% if liste[0].op %}
+	<li>Activité : {{liste[0].level}}</li>
+{% endif %}		
+	</ul>
+</div>
+{% endif %} 
+{% endif %}

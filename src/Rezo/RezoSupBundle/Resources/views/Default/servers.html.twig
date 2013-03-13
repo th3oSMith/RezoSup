@@ -9,57 +9,19 @@
 <h2>Liste des serveurs</h2>
 
 <table cellpadding=5 cellspacing=4 align="center">
+{% set i = 1 %}
+{% for entry in list %}
+{% set i=i +1 %}
+<tr bgcolor={{ cycle(['#E5E5E5', '#F0F0F0'],i) }}>
+  <td><b>{{entry.ecole}}</b></td>
+  <td>{{entry.serveur}}</td>
+  <td>{{entry.libelle}}</td>
+  <td>{{entry.type}}</td>
+  <td>{% if entry.pseudo1 %}<a href="mailto:{{entry.pseudo1}}@rezosup.net">{{entry.pseudo1}}</a>{% endif %}</td>
+</tr>
+{% endfor %}
 
-<tr bgcolor=#E5E5E5>
-  <td><b>Ecole Nationale Supérieure des Télécom de Paris</b></td>
-  <td>irc.enst.rezosup.org</td>
-  <td>ENST (Rezel)</td>
-  <td>Public</td>
-  <td><a href="mailto:xor@rezosup.net">Xor</a>.</td>
-</tr>
-<tr bgcolor=#F0F0F0>
-  <td><b>Télécom Bretagne</b></td>
-  <td>irc.telecom-bretagne.rezosup.org</td>
-  <td>Telecom Bretagne (ResEl)</td>
-  <td>Public</td>
-  <td><a href="mailto:ecaille@resel.fr">Twister</a>.</td>
-</tr>
-<tr bgcolor=#E5E5E5>
-  <td><b>Université Paris Sud</b></td>
-  <td>irc.u-psud.rezosup.org</td>
-  <td>Université Paris Sud (Université Paris Sud)</td>
-  <td>Public</td>
-  <td><a href="mailto:Nico@rezosup.net">Nico</a>, <a href="mailto:kindman@rezosup.net">KindMan</a>.</td>
-</tr>
-<tr bgcolor=#F0F0F0>
-  <td><b>Ecole Polytechnique</b></td>
-  <td>irc.polytechnique.rezosup.org</td>
-  <td>Serveur IRC de l'X</td>
-  <td>Privé</td>
-  <td><a href="mailto:nc@rezosup.net">nc</a>.</td>
-</tr>
-<tr bgcolor=#E5E5E5>
-  <td><b>Ecole Nationale Supérieure d'Electrotechnique, d'Electronique, d'Informatique, d'Hydraulique et des Télécommunications</b></td>
-  <td>irc.inp-net.rezosup.org</td>
-  <td>Serveur IRC de l'N7</td>
-  <td>Public</td>
-  <td><a href="mailto:pixy@rezosup.net">pixy</a>.</td>
-</tr>
-<tr bgcolor=#F0F0F0>
-  <td><b>Supélec - Campus GIF</b></td>
-  <td>irc.supelec.rezosup.org</td>
-  <td>Serveur IRC de Supélec Rézo</td>
-  <td>Public</td>
-  <td><a href="mailto:alef_burzmali@rezosup.net">Alef_Burzmali</a>.</td>
-</tr>
-<tr bgcolor=#E5E5E5>
-  <td><b>Ecole Pour l'Informatique et les Techniques avancées /
-Ecole Pour l'Informatique et les nouvelles TECHnologies</b></td>
-  <td>irc.epita.rezosup.org</td>
-  <td>Serveur IRC de l'Epita/Epitech</td>
-  <td>Public</td>
-  <td><a href="mailto:shine@rezosup.net">shine</a>.</td>
-</tr>
+
 </table>
 
 <br/>

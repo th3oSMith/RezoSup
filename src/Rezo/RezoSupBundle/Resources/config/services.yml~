@@ -1,0 +1,12 @@
+parameters:
+#    rezo_rezo_sup.example.class: Rezo\RezoSupBundle\Example
+
+services:
+#    rezo_rezo_sup.example:
+#        class: %rezo_rezo_sup.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#
+        rezo_rezo_sup.profile.form.type:
+                class: Rezo\RezoSupBundle\Form\Type\ProfileFormType
+                tags:
+                        - { name: form.type, alias:rezo_user_profile }   

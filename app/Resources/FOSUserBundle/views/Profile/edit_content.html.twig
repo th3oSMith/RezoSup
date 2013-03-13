@@ -1,0 +1,25 @@
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    
+    
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.pseudo1,{'label': 'nickname : '}) }}
+    {{ form_row(form.pseudo2,{'label': 'alternatif : '}) }}
+    {{ form_row(form.id_server,{'label': 'Serveur : '}) }}    
+    {{ form_row(form.channels) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+	{{ form_row(form.sexe) }}
+	{{ form_row(form.naissance,{'label': 'Date de Naissance : '}) }}
+	{{ form_row(form.ville) }}    
+	{{ form_row(form.url,{'label': 'Site web : '}) }}    
+	{{ form_row(form.message,{'label': 'Description : '}) }}    
+    
+
+
+    {{ form_rest(form) }}
+
+    <div>
+        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

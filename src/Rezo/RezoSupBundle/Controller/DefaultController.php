@@ -5,6 +5,7 @@ namespace Rezo\RezoSupBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Rezo\RezoSupBundle\Entity\News;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class DefaultController extends Controller
 {
@@ -24,7 +25,18 @@ class DefaultController extends Controller
     
         public function serversAction()
     {
-        return $this->render('RezoRezoSupBundle:Default:servers.html.twig');
+		
+		/*
+		 * SELECT * FROM Server as s LEFT OUTER JOIN  (SELECT * from (SELECT * FROM fos_user ORDER BY id DESC ) as tmp  GROUP BY id_server ) as f ON s.id = f.id_server
+		 * 
+		 * */
+		
+		$sql="SELECT s.serveur, s.ecole, s.libelle, s.type, f.pseudo1  FROM Server as s LEFT OUTER JOIN  (SELECT * from (SELECT * FROM fos_user WHERE level>0 ORDER BY id DESC ) as tmp  GROUP BY id_server ) as f ON s.id = f.id_server";
+		$stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+		$stmt->execute();
+		$servers = $stmt->fetchAll();
+		
+        return $this->render('RezoRezoSupBundle:Default:servers.html.twig',array("list"=>$servers));
     }
     
         public function mapAction()
@@ -42,14 +54,48 @@ class DefaultController extends Controller
         return $this->render('RezoRezoSupBundle:Default:proxy.html.twig');
     }
     
+        public function compteAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:compte.html.twig');
+    }
+    
+        public function annuaireAction()
+    {
+		
+		$repository = $this->getDoctrine()
+		->getRepository('RezoRezoSupBundle:Server');
+		
+		$servers=$repository->findAll();
+		
+		/*
+		if ($this->get('security.context')->isGranted('ROLE_USER')){
+			echo $this->get('security.context')->getToken()->getUser()->getUsername();
+		}
+		*/
+		
+		
+        return $this->render('RezoRezoSupBundle:Default:annuaire.html.twig', array("servers"=>$servers));
+    }
+    
         public function faqAction()
     {
         return $this->render('RezoRezoSupBundle:Default:faq.html.twig');
     }
     
+        public function loginAction()
+    {
+        return $this->render('RezoRezoSupBundle:Default:login.html.twig');
+    }
+    
         public function servicesAction()
     {
         return $this->render('RezoRezoSupBundle:Default:services.html.twig');
+    }
+    
+        public function redirectAction(){
+
+			return $this->redirect($this->generateUrl('home'));
+
     }
     
     
@@ -58,6 +104,9 @@ class DefaultController extends Controller
         return $this->render('RezoRezoSupBundle:Default:commandes.html.twig');
     }
     
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     **/
     
         public function newsPostAction()
     {
@@ -68,8 +117,7 @@ class DefaultController extends Controller
 		
 		$form = $this->createFormBuilder($news)
 			->add('title', 'text')
-			->add('author', 'text')
-			->add('content','textarea')
+			->add('text','textarea')
 			->getForm();
 		
 		
@@ -82,8 +130,7 @@ class DefaultController extends Controller
 			$news=new News();
 			$form = $this->createFormBuilder($news)
 			->add('title', 'text')
-			->add('author', 'text')
-			->add('content','textarea')
+			->add('text','textarea')
 			->getForm();
 		
 		$form->bind($request);
@@ -93,6 +140,8 @@ class DefaultController extends Controller
 			$news=$form->getData();
 			$date = new \DateTime();
 			$news->setDate($date);
+			$news->setOperId(1); //OpID ----------------------------------
+			$news->setDeleted(0);
 			
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($news);
@@ -111,12 +160,18 @@ class DefaultController extends Controller
         public function newsAction($page)
     {
 		
-		$repository = $this->getDoctrine()
-					->getRepository('RezoRezoSupBundle:News');
-					
-		$news = $repository->findBy(array(),array('id'=>'DESC'));
+		$em = $this->getDoctrine()->getManager();
+		$query = $em->createQuery(
+		'SELECT n.title, n.date, n.text, o.pseudo1 as pseudo1, n.url
+		FROM RezoRezoSupBundle:News n
+		LEFT JOIN RezoRezoSupBundle:Opers o WITH n.oper_id = o.id
+		WHERE n.deleted=0
+		ORDER BY n.id DESC'
+		);
 		
-		$elementsParPage=4;
+		$news = $query->getResult();
+		
+		$elementsParPage=5;
 		$dernier=false;
 		
 		if (count(array_slice($news,$elementsParPage*($page),$elementsParPage))==0) { //Si la dernière page a été atteinte

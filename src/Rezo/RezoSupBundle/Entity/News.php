@@ -22,32 +22,81 @@ class News
     private $id;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=40)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="text", type="text")
      */
-    private $content;
+    private $text;
 
     /**
-     * @var String
+     * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
-    private $author;
+    private $url;
 
     /**
-     * @var \DateTime
+     * @var integer
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="oper_id", type="smallint")
      */
-    private $date;
+    private $oper_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urltext", type="string", length=255, nullable=true)
+     */
+    private $urltext;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keyword", type="string", length=40, nullable=true)
+     */
+    private $keyword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="target", type="string", length=16, nullable=true)
+     */
+    private $target;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="site", type="string", length=40, nullable=true)
+     */
+    private $site;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type_id", type="smallint",nullable=true)
+     */
+    private $type_id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted", type="smallint", nullable=true)
+     */
+    private $deleted;
 
 
     /**
@@ -58,6 +107,29 @@ class News
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return News
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -84,71 +156,209 @@ class News
     }
 
     /**
-     * Set content
+     * Set text
      *
-     * @param string $content
+     * @param string $text
      * @return News
      */
-    public function setContent($content)
+    public function setText($text)
     {
-        $this->content = $content;
+        $this->text = $text;
     
         return $this;
     }
 
     /**
-     * Get content
+     * Get text
      *
      * @return string 
      */
-    public function getContent()
+    public function getText()
     {
-        return $this->content;
+        return $this->text;
     }
 
     /**
-     * Set author
+     * Set url
      *
-     * @param \String $author
+     * @param string $url
      * @return News
      */
-    public function setAuthor($author)
+    public function setUrl($url)
     {
-        $this->author = $author;
+        $this->url = $url;
     
         return $this;
     }
 
     /**
-     * Get author
+     * Get url
      *
-     * @return \String 
+     * @return string 
      */
-    public function getAuthor()
+    public function getUrl()
     {
-        return $this->author;
+        return $this->url;
     }
 
     /**
-     * Set date
+     * Set oper_id
      *
-     * @param \DateTime $date
+     * @param integer $operId
      * @return News
      */
-    public function setDate($date)
+    public function setOperId($operId)
     {
-        $this->date = $date;
+        $this->oper_id = $operId;
     
         return $this;
     }
 
     /**
-     * Get date
+     * Get oper_id
      *
-     * @return \DateTime 
+     * @return integer 
      */
-    public function getDate()
+    public function getOperId()
     {
-        return $this->date;
+        return $this->oper_id;
+    }
+
+    /**
+     * Set urltext
+     *
+     * @param string $urltext
+     * @return News
+     */
+    public function setUrltext($urltext)
+    {
+        $this->urltext = $urltext;
+    
+        return $this;
+    }
+
+    /**
+     * Get urltext
+     *
+     * @return string 
+     */
+    public function getUrltext()
+    {
+        return $this->urltext;
+    }
+
+    /**
+     * Set keyword
+     *
+     * @param string $keyword
+     * @return News
+     */
+    public function setKeyword($keyword)
+    {
+        $this->keyword = $keyword;
+    
+        return $this;
+    }
+
+    /**
+     * Get keyword
+     *
+     * @return string 
+     */
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
+
+    /**
+     * Set target
+     *
+     * @param string $target
+     * @return News
+     */
+    public function setTarget($target)
+    {
+        $this->target = $target;
+    
+        return $this;
+    }
+
+    /**
+     * Get target
+     *
+     * @return string 
+     */
+    public function getTarget()
+    {
+        return $this->target;
+    }
+
+    /**
+     * Set site
+     *
+     * @param string $site
+     * @return News
+     */
+    public function setSite($site)
+    {
+        $this->site = $site;
+    
+        return $this;
+    }
+
+    /**
+     * Get site
+     *
+     * @return string 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
+    /**
+     * Set type_id
+     *
+     * @param integer $typeId
+     * @return News
+     */
+    public function setTypeId($typeId)
+    {
+        $this->type_id = $typeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get type_id
+     *
+     * @return integer 
+     */
+    public function getTypeId()
+    {
+        return $this->type_id;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param integer $deleted
+     * @return News
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return integer 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }

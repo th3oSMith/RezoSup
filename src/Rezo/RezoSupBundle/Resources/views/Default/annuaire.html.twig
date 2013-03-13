@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Annuaire{% endblock %}
+
+
+
+{% block body %}
+
+<h3>Membres de Rezosup</h3><br/>
+
+<div class="bs-docs" id="annuaire">
+	<label for="username">Nom d'utilisateur </label><input  onkeyup="getListe()" type="text" id="username">
+	<label for="serveur">Serveur </label>
+	<select type="text" onchange="getListe()"id="serveur">
+	<option></option>
+	{%for entry in servers %}
+	<option value="{{entry.id}}">{{entry.serveur}}</option>
+	{% endfor %}
+	</select>
+	<label class="checkbox" for="operateur">Operateur
+		<input onchange="getListe()" id="operateur" name="operateur" value="on" type="checkbox">
+	</label>
+	<br/><button onclick="getListe()" class="btn">Rechercher</button>
+
+
+	<br/>
+	<div id="listeDiv" class="well">
+	</div>
+</div>
+
+{% endblock %}

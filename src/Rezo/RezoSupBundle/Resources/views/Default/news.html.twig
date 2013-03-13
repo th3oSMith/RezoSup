@@ -6,8 +6,16 @@
 
 {% block body %}
 
-<h3>Actualités :</h3><br/>
+<h3>Actualités :</h3>
 
+
+
+{% for entry in news %}
+<div class="newsItem">
+	<div class="title"><span class="title"><a href="{{entry.url}}">{{entry.title}}</a></span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.pseudo1}}</span></div>
+	<div class="content">{{entry.text|raw}}</div>
+</div>
+{%endfor%}
 {% if page!=1 %}
 <a href="{{path('news_page', {'page':page-1})}}">Page précédente</a>
 &nbsp;
@@ -16,13 +24,5 @@
 {% if dernier==false %}
 <a href="{{path('news_page', {'page':page+1})}}">Page suivante</a>
 {% endif %}
-<br/>
-{% for entry in news %}
-<div class="newsItem">
-	<div class="title"><span class="title">{{entry.title}}</span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.author}}</span></div>
-	<div class="content">{{entry.content}}</div>
-</div>
-{%endfor%}
-
 
 {% endblock %}

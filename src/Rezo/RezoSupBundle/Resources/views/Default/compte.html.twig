@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{parent()}} - Mon Compte{% endblock %}
+
+
+
+{% block body %}
+
+<h3>Mon Compte</h3>
+
+ {% if is_granted('ROLE_USER') %}
+
+{% render "FOSUserBundle:Profile:edit" %}
+
+ {% else %}
+{% render "FOSUserBundle:Security:login" %}
+
+<a href="{{path('fos_user_registration_register')}}">Inscription</a>
+
+{% endif %}
+
+{% endblock %}
