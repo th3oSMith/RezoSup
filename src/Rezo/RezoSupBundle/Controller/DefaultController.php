@@ -13,17 +13,21 @@ class DefaultController extends Controller
     {
         return $this->render('RezoRezoSupBundle:Default:index.html.twig');
     }
+    
     public function thanksAction()
     {
         return $this->render('RezoRezoSupBundle:Default:thanks.html.twig');
     }
     
-        public function charteAction()
+     public function charteAction()
     {
         return $this->render('RezoRezoSupBundle:Default:charte.html.twig');
     }
     
-        public function serversAction()
+    
+    
+    
+     public function serversAction()
     {
 		
 		/*
@@ -104,65 +108,13 @@ class DefaultController extends Controller
         return $this->render('RezoRezoSupBundle:Default:commandes.html.twig');
     }
     
-    /**
-     * @Secure(roles="ROLE_ADMIN")
-     **/
-    
-        public function newsPostAction()
-    {
-		
-		$news=new News();
-		
-
-		
-		$form = $this->createFormBuilder($news)
-			->add('title', 'text')
-			->add('text','textarea')
-			->getForm();
-		
-		
-        return $this->render('RezoRezoSupBundle:Default:newsPost.html.twig', array('form' => $form->createView()));
-    }
-    
-        public function newsPostProcessAction(Request $request)
-    {
-		
-			$news=new News();
-			$form = $this->createFormBuilder($news)
-			->add('title', 'text')
-			->add('text','textarea')
-			->getForm();
-		
-		$form->bind($request);
-		
-		if ($form->isValid()) {
-			
-			$news=$form->getData();
-			$date = new \DateTime();
-			$news->setDate($date);
-			$news->setOperId(1); //OpID ----------------------------------
-			$news->setDeleted(0);
-			
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($news);
-			$em->flush();
-			
-			
-			return $this->render('RezoRezoSupBundle:Default:index.html.twig');
-			
-		}
-		
-        return $this->render('RezoRezoSupBundle:Default:charte.html.twig');
-    }
-    
-
     
         public function newsAction($page)
     {
 		
 		$em = $this->getDoctrine()->getManager();
 		$query = $em->createQuery(
-		'SELECT n.title, n.date, n.text, o.pseudo1 as pseudo1, n.url
+		'SELECT n.title, n.date, n.text, o.pseudo1 as pseudo1, n.url, n.id
 		FROM RezoRezoSupBundle:News n
 		LEFT JOIN RezoRezoSupBundle:Opers o WITH n.oper_id = o.id
 		WHERE n.deleted=0

@@ -46,7 +46,10 @@ class ProfileController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
+		$table["option"]=1;
+
         $form = $this->container->get('fos_user.profile.form');
+        
         $formHandler = $this->container->get('fos_user.profile.form.handler');
 
         $process = $formHandler->process($user);

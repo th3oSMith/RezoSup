@@ -22,15 +22,17 @@ news_page:
     requirements:
         page: \d+
 
+
+
 news_post_process:
-    pattern:  /post/
-    defaults: { _controller: RezoRezoSupBundle:Default:newsPostProcess }
+    pattern:  /post/{newsId}/
+    defaults: { _controller: RezoRezoSupBundle:Administration:newsPostProcess}
     requirements:
         _method : POST
 
 news_post:
     pattern:  /post/
-    defaults: { _controller: RezoRezoSupBundle:Default:newsPost }
+    defaults: { _controller: RezoRezoSupBundle:Administration:newsPostProcess, newsId:-1}
 
 servers:
     pattern:  /servers/
@@ -90,3 +92,24 @@ redirect:
     pattern: /redirect
     defaults: { _controller: RezoRezoSupBundle:Default:redirect}
     
+deleteNews:
+    pattern: /delete/{newsId}
+    defaults: { _controller: RezoRezoSupBundle:Administration:delete}
+    
+editNews:
+    pattern: /edit/{newsId}
+    defaults: { _controller: RezoRezoSupBundle:Administration:newsPostProcess}
+    
+administration:
+    pattern: /admin/
+    defaults: { _controller:RezoRezoSupBundle:Administration:index}
+
+newsAdministration:
+    pattern: /admin/news/
+    defaults: { _controller:RezoRezoSupBundle:Administration:news, page:1}
+
+newsAdministration_page:
+    pattern:  /admin/actus/{page}/
+    defaults: { _controller: RezoRezoSupBundle:Administration:news }
+    requirements:
+        page: \d+

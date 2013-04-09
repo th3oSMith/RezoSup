@@ -45,7 +45,7 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
 
@@ -59,42 +59,42 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="urltext", type="string", length=255)
+     * @ORM\Column(name="urltext", type="string", length=255, nullable=true)
      */
     private $urltext;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="keyword", type="string", length=40)
+     * @ORM\Column(name="keyword", type="string", length=40, nullable=true)
      */
     private $keyword;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="target", type="string", length=16)
+     * @ORM\Column(name="target", type="string", length=16, nullable=true)
      */
     private $target;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="site", type="string", length=40)
+     * @ORM\Column(name="site", type="string", length=40, nullable=true)
      */
     private $site;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="type_id", type="smallint")
+     * @ORM\Column(name="type_id", type="smallint",nullable=true)
      */
     private $type_id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="deleted", type="smallint")
+     * @ORM\Column(name="deleted", type="smallint", nullable=true)
      */
     private $deleted;
 
@@ -107,6 +107,17 @@ class News
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     * @return integer 
+     */
+    public function setId(îd)
+    {
+        return $this;
     }
 
     /**

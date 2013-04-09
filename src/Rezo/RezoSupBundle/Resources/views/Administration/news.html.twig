@@ -1,0 +1,36 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}{{parent()}} - Actualités{% endblock %}
+
+
+
+{% block body %}
+
+<span class="flash">
+        {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
+</span>
+
+
+<h3>Actualités :</h3>
+
+{% for entry in news %}
+<div class="newsItem">
+	<div class="title"><span class="title{% if entry.deleted == 1 %} deleted{% endif %}"><a href="{{entry.url}}">{{entry.title}}</a></span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.pseudo1}}
+	 {% if is_granted('ROLE_ADMIN') %}<br/> {% if entry.deleted != 1 %}<a href="{{path('deleteNews', {newsId : entry.id})}}">Supprimer</a> -{% endif %} <a href="{{path('editNews', {newsId : entry.id})}}">Éditer</a>{% endif %} </span></div>
+	<div class="content">{{entry.text|raw}}</div>
+</div>
+{%endfor%}
+{% if page!=1 %}
+<a href="{{path('newsAdministration_page', {'page':page-1})}}">Page précédente</a>
+&nbsp;
+{% endif %}
+
+{% if dernier==false %}
+<a href="{{path('newsAdministration_page', {'page':page+1})}}">Page suivante</a>
+{% endif %}
+
+{% endblock %}

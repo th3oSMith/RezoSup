@@ -6,13 +6,21 @@
 
 {% block body %}
 
+<span class="flash">
+        {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
+</span>
+
+
 <h3>Actualités :</h3>
-
-
 
 {% for entry in news %}
 <div class="newsItem">
-	<div class="title"><span class="title"><a href="{{entry.url}}">{{entry.title}}</a></span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.pseudo1}}</span></div>
+	<div class="title"><span class="title"><a href="{{entry.url}}">{{entry.title}}</a></span><br/><span class="author">Le {{entry.date|date('d-m-Y')}} par {{entry.pseudo1}}
+	 {% if is_granted('ROLE_ADMIN') %}<br/> <a href="{{path('deleteNews', {newsId : entry.id})}}">Supprimer</a>{% endif %} </span></div>
 	<div class="content">{{entry.text|raw}}</div>
 </div>
 {%endfor%}

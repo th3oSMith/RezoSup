@@ -110,6 +110,18 @@ class News
     }
 
     /**
+     * Set id
+     *
+     * @param int $id
+     * @return integer 
+     */
+    public function setId($id)
+    {
+	$this->id = $id;
+        return $this;
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date

@@ -14,10 +14,12 @@
 	{{ form_row(form.ville) }}    
 	{{ form_row(form.url,{'label': 'Site web : '}) }}    
 	{{ form_row(form.message,{'label': 'Description : '}) }}    
+	
+	{% if is_granted('ROLE_ADMIN') %}
+	
+	{{ form_row(form.level,{'label': 'Activité : '}) }}    
     
-
-
-    {{ form_rest(form) }}
+	{% endif %}
 
     <div>
         <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />

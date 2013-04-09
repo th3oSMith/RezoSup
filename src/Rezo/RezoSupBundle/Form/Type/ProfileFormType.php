@@ -76,7 +76,7 @@ class ProfileFormType extends AbstractType
 																' '   => ' ',
 																'M'   => 'M',
 																'F' => 'F')))
-            ->add('naissance', 'date', array('years' => range(1920, date('Y'))))
+            ->add('naissance', 'date', array('years' => range(date('Y')-100, date('Y'))))
             ->add('id_server', 'entity', array(
 											'class' => 'RezoRezoSupBundle:Server',
 											'property' => 'serveur'
@@ -85,6 +85,13 @@ class ProfileFormType extends AbstractType
             ->add('ville')
             ->add('url')
             ->add('message')
+            ->add('level', 'choice' , array('choices' => array(
+																'0'=>'Utilisateur',
+																'1'=>'Opérateur',
+																'2'=>'Ancien Opérateur toujours actif',
+																'3'=>'Ancien Opérateur inactif'		
+            )))
+            
         ;
     }
 }
