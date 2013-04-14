@@ -63,3 +63,15 @@ fos_user:
         db_driver: orm
         firewall_name: main
         user_class: Rezo\RezoSupBundle\Entity\User
+        profile:
+               form:
+                       type : rezo_user_profile
+        registration:
+                confirmation:
+                        from_email:
+                                address: no-reply@rezosup.net
+                                sender_name: RezoSup
+        resetting:
+                from_email:
+                        address: no-reply@rezosup.net
+                        sender_name: RezoSup

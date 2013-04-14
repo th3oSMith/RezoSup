@@ -1,4 +1,4 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FOSUserBundle::layout_full.html.twig" %}
 
 
 {% block fos_user_content %}
@@ -27,6 +27,9 @@
 		
 			<input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 		</div>
+		
+		<br/>
+		<a href="{{path('fos_user_registration_register')}}">Inscription</a> - <a href="{{path('fos_user_resetting_request')}}">Mot de passe oublié</a>
 	</div>
 
 {% if error %}

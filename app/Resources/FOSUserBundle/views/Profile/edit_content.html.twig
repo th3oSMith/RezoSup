@@ -19,6 +19,10 @@
 	
 	{{ form_row(form.level,{'label': 'Activité : '}) }}    
     
+    {{form_row(form.current_password)}}
+    
+    {{ form_widget(form._token) }}
+    
 	{% endif %}
 
     <div>

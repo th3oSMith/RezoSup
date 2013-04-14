@@ -85,7 +85,7 @@ listeAnnuaireServer:
 
 
 connexion:
-    pattern: /login
+    pattern: /loginf
     defaults: { _controller: RezoRezoSupBundle:Default:login}
 
 redirect:
@@ -113,3 +113,33 @@ newsAdministration_page:
     defaults: { _controller: RezoRezoSupBundle:Administration:news }
     requirements:
         page: \d+
+        
+mailingAdministration:
+    pattern:   /admin/mailing/
+    defaults: { _controller:RezoRezoSupBundle:Administration:mailing}
+    
+changeAccess:
+    pattern:   /admin/mailing/set/{id}/{level}
+    defaults: { _controller:RezoRezoSupBundle:Ajax:changeAccess}
+
+delAdmin:
+    pattern:   /admin/mailing/del/{id}
+    defaults: { _controller:RezoRezoSupBundle:Ajax:delAdmin}
+
+getAdmin:
+    pattern:   /admin/mailing/get/{id}
+    defaults: { _controller:RezoRezoSupBundle:Ajax:getAdmin}
+
+
+
+createAlias:
+    pattern:   /admin/mailing/create/
+    defaults:  { _controller:RezoRezoSupBundle:Ajax:createAlias}
+    requirements:
+        _method : POST
+        
+createAdmin:
+    pattern:   /admin/mailing/createAdmin/
+    defaults:  { _controller:RezoRezoSupBundle:Administration:createAdmin}
+    requirements:
+        _method : POST        

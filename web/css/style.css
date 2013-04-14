@@ -245,3 +245,37 @@ span.title.deleted{
 	text-decoration:line-through;
 	color:red;
 }
+
+.navbar a.brand {
+	padding-top:0;
+	padding-bottom:0;
+}
+
+#logo{
+	float:left;
+	height:40px;
+
+}
+
+#admin_list{
+	border:1px solid silver;
+	background-color:white;
+}
+
+#admin_list tr th{
+	background-color:silver;
+}
+
+#admin_list tr .action{
+	border-left:1px solid silver;
+}
+
+#admin_list tr td, #admin_list tr th{
+
+	text-align:center;
+
+}
+
+.aliasUser{
+	border-left:2px solid silver;
+}

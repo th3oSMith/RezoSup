@@ -1,0 +1,62 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}{{parent()}} - Mailing{% endblock %}
+
+
+
+{% block body %}
+
+<h3>Gestion des administrateurs de RezoSup</h3>
+
+<table id="admin_list" class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>User</th>
+		<th>email</th><th>Serveur</th>
+		<th>Mailing</th><th>Oper</th>
+		<th>Admin</th>
+		<th>Action</th>
+	</tr>
+{% for entry in admins%}
+		<tr>
+		<td>{{entry.id}}</td>
+		<td>{{entry.user}}</td>
+		<td>{{entry.email}}</td>
+		<td>{{entry.serveur}}</td>
+		<td>{% if user.level > 1 %}<a href="#" onClick="changeAccess({{entry.id}},1,this)">{% endif %}{%if entry.mailing ==1 %}1{% else %} 0{% endif %}{% if user.level > 1 %}</a>{% endif %}</td>
+		<td>{% if user.level > 2 %}<a href="#" onClick="changeAccess({{entry.id}},2,this)">{% endif %}{%if entry.oper ==1 %}1{% else %} 0{% endif %}{% if user.level > 2 %}</a>{% endif %}</td>
+		<td>{% if user.level >= 3 %}<a href="#" onClick="changeAccess({{entry.id}},3,this)">{% endif %}{%if entry.admin ==1 %}1{% else %} 0{% endif %}{% if user.level >= 3 %}</a>{% endif %}</td>
+		<td class="action">{% if is_granted('ROLE_ADMIN')%} <a onClick="getAdmin({{entry.id}})" href="#">Éditer</a> - <a onClick="delAdmin({{entry.id}})" href="#">Supprimer</a> - <a onClick="createAlias({{entry.id}})" href="#">Créer un alias</a> {% endif %}</td>
+	</tr>
+	
+	{% for alias in aliases %}
+		
+		{% if alias.alias == entry.id %}
+			<tr>
+				<td></td>
+				<td class="aliasUser">{{alias.user}}</td>
+				<td colspan=5>Alias</td>
+				<td class="action">{% if user.user == entry.user or is_granted('ROLE_ADMIN') %} <a onClick="delAdmin({{alias.id}})" href="#">Supprimer</a>{% endif %}</td>
+			</tr>
+		{% endif %}
+
+	{%  endfor %}
+	
+{% endfor %}
+
+</table>
+
+<div class="bs-docs">
+
+<h4><a href="#" id="title" onclick="$('#addForm').toggle()"> Ajouter un utilisateur</a></h4>
+
+<form id="addForm" style="display:none" action="{{ path('createAdmin') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    
+    <input type="hidden" id="userId" name="userId" value="-1">
+    <input class="btn" value="Envoyer" type="submit" />
+</form>
+</div>
+
+
+{% endblock %}

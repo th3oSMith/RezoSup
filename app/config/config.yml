@@ -66,3 +66,13 @@ fos_user:
         profile:
                form:
                        type : rezo_user_profile
+        registration:
+                confirmation:
+                        from_email:
+                                address: no-reply@rezosup.net
+                                sender_name: RezoSup
+        resetting:
+                email:
+                        from_email:
+                                address: no-reply@rezosup.net
+                                sender_name: RezoSup

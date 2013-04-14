@@ -116,7 +116,7 @@ class DefaultController extends Controller
 		$query = $em->createQuery(
 		'SELECT n.title, n.date, n.text, o.pseudo1 as pseudo1, n.url, n.id
 		FROM RezoRezoSupBundle:News n
-		LEFT JOIN RezoRezoSupBundle:Opers o WITH n.oper_id = o.id
+		LEFT JOIN RezoRezoSupBundle:User o WITH n.oper_id = o.id
 		WHERE n.deleted=0
 		ORDER BY n.id DESC'
 		);
