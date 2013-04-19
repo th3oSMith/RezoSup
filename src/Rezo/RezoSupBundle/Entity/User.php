@@ -13,6 +13,20 @@ use FOS\UserBundle\Entity\User as BaseUser;
  */
 class User extends BaseUser
 {
+
+
+     /**
+     * @ORM\ManyToOne(targetEntity="Server", inversedBy="admin")
+     * @ORM\JoinColumn(name="server_id", referencedColumnName="id")
+     */
+    protected $serveur;
+
+	/**
+     * @ORM\OneToOne(targetEntity="Admin", mappedBy="associatedUser")
+     */
+    private $admin;
+
+
     /**
      * @var integer
      *
@@ -28,13 +42,6 @@ class User extends BaseUser
      * @ORM\Column(name="level", type="smallint", nullable=true)
      */
     private $level;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_server", type="smallint", nullable=true)
-     */
-    private $id_server;
 
     /**
      * @var string
@@ -180,29 +187,6 @@ class User extends BaseUser
     public function getLevel()
     {
         return $this->level;
-    }
-
-    /**
-     * Set id_server
-     *
-     * @param integer $idServer
-     * @return User
-     */
-    public function setIdServer($idServer)
-    {
-        $this->id_server = $idServer;
-    
-        return $this;
-    }
-
-    /**
-     * Get id_server
-     *
-     * @return integer 
-     */
-    public function getIdServer()
-    {
-        return $this->id_server;
     }
 
     /**
@@ -441,7 +425,7 @@ class User extends BaseUser
      * @param string $sexe
      * @return User
      */
-    public function setsexe($sexe)
+    public function setSexe($sexe)
     {
         $this->sexe = $sexe;
     
@@ -453,7 +437,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getsexe()
+    public function getSexe()
     {
         return $this->sexe;
     }
@@ -464,7 +448,7 @@ class User extends BaseUser
      * @param string $ville
      * @return User
      */
-    public function setville($ville)
+    public function setVille($ville)
     {
         $this->ville = $ville;
     
@@ -476,7 +460,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getville()
+    public function getVille()
     {
         return $this->ville;
     }
@@ -550,7 +534,6 @@ class User extends BaseUser
         return $this->message;
     }
 
-
     /**
      * Set url
      *
@@ -572,5 +555,51 @@ class User extends BaseUser
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set serveur
+     *
+     * @param \Rezo\RezoSupBundle\Entity\Server $serveur
+     * @return User
+     */
+    public function setServeur(\Rezo\RezoSupBundle\Entity\Server $serveur = null)
+    {
+        $this->serveur = $serveur;
+    
+        return $this;
+    }
+
+    /**
+     * Get serveur
+     *
+     * @return \Rezo\RezoSupBundle\Entity\Server 
+     */
+    public function getServeur()
+    {
+        return $this->serveur;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param \Rezo\RezoSupBundle\Entity\Admin $admin
+     * @return User
+     */
+    public function setAdmin(\Rezo\RezoSupBundle\Entity\Admin $admin = null)
+    {
+        $this->admin = $admin;
+    
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \Rezo\RezoSupBundle\Entity\Admin 
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }

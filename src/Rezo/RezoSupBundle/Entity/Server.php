@@ -12,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Server
 {
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="serveur")
+     */
+    protected $admin;
+
+
+
     /**
      * @var integer
      *
@@ -104,8 +113,14 @@ class Server
      * @ORM\Column(name="ipv6", type="smallint")
      */
     private $ipv6;
-
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->admin = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -391,10 +406,37 @@ class Server
     {
         return $this->ipv6;
     }
-    
-    public function  __toString()
+
+    /**
+     * Add admin
+     *
+     * @param \Rezo\RezoSupBundle\Entity\User $admin
+     * @return Server
+     */
+    public function addAdmin(\Rezo\RezoSupBundle\Entity\User $admin)
     {
-		return (string)$this->id;
-	}
+        $this->admin[] = $admin;
     
+        return $this;
+    }
+
+    /**
+     * Remove admin
+     *
+     * @param \Rezo\RezoSupBundle\Entity\User $admin
+     */
+    public function removeAdmin(\Rezo\RezoSupBundle\Entity\User $admin)
+    {
+        $this->admin->removeElement($admin);
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
 }

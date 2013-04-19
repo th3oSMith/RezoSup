@@ -67,6 +67,8 @@
               </li>
               <li><a href="mailto:rezosup@rezosup.net">Contact</a></li>
               <li><a href="{{path('thanks')}}">Remerciements</a></li>
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li><a href="{{path('fos_user_security_logout')}}">Logout</a></li>{% endif %}
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>

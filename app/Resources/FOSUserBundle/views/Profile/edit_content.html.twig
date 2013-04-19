@@ -5,7 +5,7 @@
     {{ form_row(form.email) }}
     {{ form_row(form.pseudo1,{'label': 'nickname : '}) }}
     {{ form_row(form.pseudo2,{'label': 'alternatif : '}) }}
-    {{ form_row(form.id_server,{'label': 'Serveur : '}) }}    
+    {{ form_row(form.serveur,{'label': 'Serveur : '}) }}    
     {{ form_row(form.channels) }}
     {{ form_row(form.nom) }}
     {{ form_row(form.prenom) }}
@@ -19,11 +19,11 @@
 	
 	{{ form_row(form.level,{'label': 'Activité : '}) }}    
     
-    {{form_row(form.current_password)}}
+	{% endif %}
+
+    {{form_rest(form)}}
     
     {{ form_widget(form._token) }}
-    
-	{% endif %}
 
     <div>
         <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />

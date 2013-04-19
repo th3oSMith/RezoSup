@@ -88,11 +88,11 @@ function getAdmin(id){
 		for (var field in data){
 			
 			$("#form_"+field).val(data[field]);
-			
 		}
 		
 		$("#form_password").val(-1);
 		$("#form_password")[0].parentNode.style.display="none";
+		$("#form_div").fadeIn(0);
 		
 		$('#addForm').fadeIn(0);
 		$('#title')[0].innerHTML="Éditer un utilisateur";

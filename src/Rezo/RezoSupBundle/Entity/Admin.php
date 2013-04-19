@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Admin
 {
+	
+	/**
+     * @ORM\OneToOne(targetEntity="User", inversedBy="admin")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $associatedUser;
+	
+	
     /**
      * @var integer
      *
@@ -28,12 +36,11 @@ class Admin
      */
     private $alias;
 
-
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
-     */
+	* @var string
+	*
+	* @ORM\Column(name="user", type="string", length=255)
+	*/
     private $user;
 
     /**
@@ -49,13 +56,6 @@ class Admin
      * @ORM\Column(name="password", type="text", length=255)
      */
     private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="serveur", type="string", length=255)
-     */
-    private $serveur;
 
     /**
      * @var boolean
@@ -88,7 +88,20 @@ class Admin
     {
         return $this->id;
     }
- 
+
+    /**
+     * Set alias
+     *
+     * @param integer $alias
+     * @return Admin
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    
+        return $this;
+    }
+
     /**
      * Get alias
      *
@@ -98,19 +111,7 @@ class Admin
     {
         return $this->alias;
     }
-    /**
-     * Set alias
-     *
-     * @param integer $alias
-     * @return Admin 
-     */
-    public function setAlias($alias)
-    {
-	$this->alias=$alias;
-        return $this;
-    }
 
- 
     /**
      * Set user
      *
@@ -181,29 +182,6 @@ class Admin
     }
 
     /**
-     * Set serveur
-     *
-     * @param string $serveur
-     * @return Admin
-     */
-    public function setServeur($serveur)
-    {
-        $this->serveur = $serveur;
-    
-        return $this;
-    }
-
-    /**
-     * Get serveur
-     *
-     * @return string 
-     */
-    public function getServeur()
-    {
-        return $this->serveur;
-    }
-
-    /**
      * Set mailing
      *
      * @param boolean $mailing
@@ -270,5 +248,28 @@ class Admin
     public function getAdmin()
     {
         return $this->admin;
+    }
+
+    /**
+     * Set associatedUser
+     *
+     * @param \Rezo\RezoSupBundle\Entity\User $associatedUser
+     * @return Admin
+     */
+    public function setAssociatedUser(\Rezo\RezoSupBundle\Entity\User $associatedUser = null)
+    {
+        $this->associatedUser = $associatedUser;
+    
+        return $this;
+    }
+
+    /**
+     * Get associatedUser
+     *
+     * @return \Rezo\RezoSupBundle\Entity\User 
+     */
+    public function getAssociatedUser()
+    {
+        return $this->associatedUser;
     }
 }

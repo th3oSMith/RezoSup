@@ -77,9 +77,9 @@ class ProfileFormType extends AbstractType
 																'M'   => 'M',
 																'F' => 'F')))
             ->add('naissance', 'date', array('years' => range(date('Y')-100, date('Y'))))
-            ->add('id_server', 'entity', array(
+            ->add('serveur', 'entity', array(
 											'class' => 'RezoRezoSupBundle:Server',
-											'property' => 'serveur'
+											'property' => 'serveur',
 											))
             ->add('channels')
             ->add('ville')

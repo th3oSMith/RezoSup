@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Admin
 {
+	
+	/**
+     * @ORM\OneToOne(targetEntity="User", inversedBy="admin")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $associatedUser;
+	
+	
     /**
      * @var integer
      *
@@ -28,34 +36,26 @@ class Admin
      */
     private $alias;
 
-
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
-     */
+	* @var string
+	*
+	* @ORM\Column(name="user", type="string", length=255)
+	*/
     private $user;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="text")
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="text", length=255)
      */
     private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="serveur", type="string", length=255)
-     */
-    private $serveur;
 
     /**
      * @var boolean
@@ -88,7 +88,20 @@ class Admin
     {
         return $this->id;
     }
- 
+
+    /**
+     * Set alias
+     *
+     * @param integer $alias
+     * @return Admin
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    
+        return $this;
+    }
+
     /**
      * Get alias
      *
@@ -98,19 +111,7 @@ class Admin
     {
         return $this->alias;
     }
-    /**
-     * Set alias
-     *
-     * @param integer $alias
-     * @return Admin 
-     */
-    public function setAlias($alias)
-    {
-	$this->alias=$alias;
-        return $this;
-    }
 
- 
     /**
      * Set user
      *
@@ -270,5 +271,51 @@ class Admin
     public function getAdmin()
     {
         return $this->admin;
+    }
+
+    /**
+     * Set assiocatedUser
+     *
+     * @param \Rezo\RezoSupBundle\Entity\User $assiocatedUser
+     * @return Admin
+     */
+    public function setAssiocatedUser(\Rezo\RezoSupBundle\Entity\User $assiocatedUser = null)
+    {
+        $this->assiocatedUser = $assiocatedUser;
+    
+        return $this;
+    }
+
+    /**
+     * Get assiocatedUser
+     *
+     * @return \Rezo\RezoSupBundle\Entity\User 
+     */
+    public function getAssiocatedUser()
+    {
+        return $this->assiocatedUser;
+    }
+
+    /**
+     * Set associatedUser
+     *
+     * @param \Rezo\RezoSupBundle\Entity\User $associatedUser
+     * @return Admin
+     */
+    public function setAssociatedUser(\Rezo\RezoSupBundle\Entity\User $associatedUser = null)
+    {
+        $this->associatedUser = $associatedUser;
+    
+        return $this;
+    }
+
+    /**
+     * Get associatedUser
+     *
+     * @return \Rezo\RezoSupBundle\Entity\User 
+     */
+    public function getAssociatedUser()
+    {
+        return $this->associatedUser;
     }
 }

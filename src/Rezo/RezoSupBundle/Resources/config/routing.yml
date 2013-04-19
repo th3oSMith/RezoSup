@@ -143,3 +143,9 @@ createAdmin:
     defaults:  { _controller:RezoRezoSupBundle:Administration:createAdmin}
     requirements:
         _method : POST        
+        
+changePass:
+    pattern:   /admin/mailing/change/
+    defaults:  { _controller:RezoRezoSupBundle:Administration:changePass}
+    requirements:
+        _method : POST        

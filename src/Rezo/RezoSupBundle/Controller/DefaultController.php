@@ -35,7 +35,7 @@ class DefaultController extends Controller
 		 * 
 		 * */
 		
-		$sql="SELECT s.serveur, s.ecole, s.libelle, s.type, f.pseudo1  FROM Server as s LEFT OUTER JOIN  (SELECT * from (SELECT * FROM fos_user WHERE level>0 ORDER BY id DESC ) as tmp  GROUP BY id_server ) as f ON s.id = f.id_server";
+		$sql="SELECT s.serveur, s.ecole, s.libelle, s.type, f.pseudo1  FROM Server as s LEFT OUTER JOIN  (SELECT * from (SELECT * FROM fos_user WHERE level=1 ORDER BY id DESC ) as tmp  GROUP BY server_id ) as f ON s.id = f.server_id";
 		$stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
 		$stmt->execute();
 		$servers = $stmt->fetchAll();

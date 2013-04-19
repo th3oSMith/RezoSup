@@ -171,17 +171,18 @@ class AdministrationController extends Controller
 		
 		$aliases = $query->getResult();
 		
-		$user['user']="airremi";
-		$user['level']=3;
-		
+			
 		//Génération du formulaire de création d'un nouvel admin
 		
 		$admin = new Admin;
 		
 		$form = $this->createFormBuilder($admin)
-			->add('user', 'text')
+			//->add('user', 'text')
+			->add('associatedUser', 'entity', array(
+											'class' => 'RezoRezoSupBundle:User',
+											'property' => 'username',
+											))
 			->add('email','email')
-			->add('serveur','text')
 			->add('password','password')
 			->add('mailing','choice', array(
 			'choices'=>array(1=>"Oui", 0=>"Non")))
@@ -191,16 +192,27 @@ class AdministrationController extends Controller
 			'choices'=>array(0=>"Non", 1=>"Oui")))
 			->getForm();
 		
+		$passForm = $this->createFormBuilder($admin)
+			->add('password','password')
+			->add('newPass','password', array("mapped"=>false, "required"=>true))
+			->getForm();
+		
+		$user = $this->container->get('security.context')->getToken()->getUser();	
 				
-		return $this->render('RezoRezoSupBundle:Administration:mailing.html.twig', array("admins"=>$admins, "aliases"=>$aliases, "user"=>$user, "form"=>$form->createView()));
+		return $this->render('RezoRezoSupBundle:Administration:mailing.html.twig', array("admins"=>$admins, "aliases"=>$aliases, "user"=>$user, "form"=>$form->createView(), "passForm"=>$passForm->createView()));
 	
 		}
 
 
+
 	public function createAdminAction(Request $request){
 		
-		
 		$userId = $request->request->get('userId');
+		
+		if ($userId<0 && !($this->get('security.context')->isGranted('ROLE_ADMIN'))){
+			return new Response("Vous n'avez pas les droits pour créer un utilisateur !");
+			}
+		
 
 		if ($userId<0){
 			$admin=new Admin();
@@ -217,13 +229,15 @@ class AdministrationController extends Controller
 			}
 		}
 		
-		
+			
 		
 		
 		$form = $this->createFormBuilder($admin)
-			->add('user', 'text')
+			->add('associatedUser', 'entity', array(
+											'class' => 'RezoRezoSupBundle:User',
+											'property' => 'username',
+											))
 			->add('email','email')
-			->add('serveur','text')
 			->add('password','password')
 			->add('mailing','choice', array(
 			'choices'=>array(1=>"Oui", 0=>"Non")))
@@ -239,9 +253,13 @@ class AdministrationController extends Controller
 			
 			if ($form->isValid()) {
 				
+						
 				$user = $this->get('security.context')->getToken()->getUser();
 					
 				$admin=$form->getData();
+				
+				$admin->setUser($admin->getAssociatedUser()->getUsername());
+				
 				$admin->setAlias(0);
 				if ($userId>0)
 					$admin->setPassword($passSave);
@@ -260,6 +278,66 @@ class AdministrationController extends Controller
 		
         return new Response("Erreur lors de la création de l'administrateur");
 		
+		
+	}
+	
+	public function changePassAction(Request $request){
+		
+		$user = $this->get('security.context')->getToken()->getUser();
+
+		
+		$admin = $user->getAdmin();
+		
+		
+		$passForm = $this->createFormBuilder(new Admin)
+			->add('password','password')
+			->add('newPass','password', array("mapped"=>false))
+			->getForm();
+		
+		if ($request->isMethod('POST')) {
+		
+			$passForm->bind($request);
+			
+			$oldPassword =  $passForm["password"]->getData();
+			$password = $passForm["newPass"]->getData();
+			
+			$salt = explode('$', $admin->getPassword(), 4);
+            $salt = $salt[2];
+            $oldPassword = crypt_apr1_md5($oldPassword, $salt);
+
+			if ($oldPassword ==  $admin->getPassword()){
+				
+				if (!empty($password)){
+					
+					$admin->setPassword(crypt_apr1_md5($password));
+												
+					$em = $this->getDoctrine()->getManager();
+					$em->persist($admin);
+					$em->flush();
+					
+					$this->get('session')->setFlash(
+												'notice',
+												'Mot de passe modifié'
+											);
+					
+					}else{
+					$this->get('session')->setFlash(
+												'notice',
+												'Mot de passe vide !!!'
+											);				
+						}
+				
+				}
+			else{
+					$this->get('session')->setFlash(
+												'notice',
+												'Erreur dans le mot de passe'
+											);
+				}
+		
+		}
+		
+        return $this->redirect($this->generateUrl("mailingAdministration"));		
 		
 	}
 	

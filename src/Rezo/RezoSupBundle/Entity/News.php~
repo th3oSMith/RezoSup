@@ -115,8 +115,9 @@ class News
      * @param int $id
      * @return integer 
      */
-    public function setId(îd)
+    public function setId($id)
     {
+	$this->id = $id;
         return $this;
     }
 
