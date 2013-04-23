@@ -134,3 +134,11 @@ function  createAlias(id){
 	}
 }
 
+
+function genere(){
+	
+	$.getJSON("update/", function(data){
+		
+		alert(data['output']);
+	});
+}

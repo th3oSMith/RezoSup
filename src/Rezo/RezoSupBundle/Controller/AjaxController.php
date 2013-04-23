@@ -213,6 +213,19 @@ class AjaxController extends Controller
 	
 	}
 
+	public function updateMailAction(){
+		
+		exec("sudo /usr/local/sbin/genere_virtual.pl 2>&1",$output);
+		$count = count($output);
+
+		
+		$json['output']=$output[$count-1];
+		
+		return new Response(json_encode($json));
+		
+		
+		}
+
 	public function createAliasAction(Request $request){
 		
 		

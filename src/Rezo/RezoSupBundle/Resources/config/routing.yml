@@ -149,3 +149,7 @@ changePass:
     defaults:  { _controller:RezoRezoSupBundle:Administration:changePass}
     requirements:
         _method : POST        
+
+updateMail:
+    pattern:   /admin/mailing/update/
+    defaults:  { _controller:RezoRezoSupBundle:Ajax:updateMail}
